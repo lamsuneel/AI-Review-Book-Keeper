@@ -1,0 +1,87 @@
+# FOUNDER.md
+
+This file explains how decisions are made in this repository.
+`README.md` explains the software. This file explains the judgment behind it.
+
+If a discussion, PR, or AI-assisted session starts drifting toward enterprise
+architecture or feature expansion, point back here.
+
+---
+
+## What we are building
+
+An AI Review Copilot for bookkeeping firms: a semantic review assistant that
+tells a senior accountant **where to spend attention** in a completed ledger.
+
+It reviews every transaction, flags only the ones requiring accounting
+judgment, and explains why. The reviewer decides. The AI never does.
+
+Mental model: **GitHub Pull Requests for accounting review.**
+
+## What we are NOT building
+
+- An AI bookkeeper
+- A close management tool
+- An anomaly detection dashboard
+- A replacement for professional judgment
+
+## The only four risks
+
+Every line of code must reduce one of these:
+
+1. **Detection** — Can we identify judgment-heavy transactions?
+2. **Precision** — Can we keep false positives low?
+3. **Trust** — Can we explain our reasoning well enough to earn it?
+4. **Adoption** — Will reviewers actually change behavior?
+
+If a proposed feature reduces none of them, the answer is no.
+The burden of proof is on the feature, not on the objection.
+
+## The success metric
+
+Not users. Not MRR. Success is a senior reviewer saying:
+
+> "These are exactly the transactions I would have reviewed."
+
+And ideally:
+
+> "I stopped scanning the whole ledger."
+
+## Decision rules
+
+**Features.** Default answer is no. To build something, name the risk it
+reduces (1–4 above). "It would be nice" and "customers will eventually need
+it" are not risks.
+
+**Architecture.** Prefer simpler, smaller, faster over more scalable.
+Boring and readable beats clever. No microservices, no premature
+abstractions, no enterprise patterns. Deleting code is better than adding it.
+
+**AI usage.** LLMs reason, explain, prioritize, and summarize. They do not
+make accounting decisions. Pattern detection uses deterministic logic
+(rules + statistics) wherever possible; the LLM handles only the semantic
+residue that rules cannot.
+
+**Pull requests.** Every PR answers "what did we learn?" — not "what did
+we ship?"
+
+**Scope.** The MVP is: upload CSV → parse → analyze → review queue with
+explanations → reviewer feedback → export. Nothing else.
+
+## Explicitly out of scope (do not re-litigate)
+
+Authentication. Organizations. Billing. Payments. Dashboards. Analytics.
+Notifications. Settings. Admin. Permissions. Workflow engines.
+Collaboration. Audit trails. Integrations beyond imports. Background jobs.
+Production infrastructure.
+
+Any of these may be proposed **only** with a written justification naming
+which of the four risks it validates. No risk, no build.
+
+## Working agreement with AI assistants
+
+When asked for a feature, challenge it first: which risk does it remove?
+Recommend against building anything that removes none. This is a founder
+project optimizing for validated learning, not an enterprise implementation.
+The objective is reaching the first design partners with the smallest
+product that meaningfully changes a senior reviewer's workflow.

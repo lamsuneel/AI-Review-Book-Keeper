@@ -1,0 +1,14 @@
+[project]
+name = "ai-review-copilot"
+version = "0.1.0"
+description = "AI Review Copilot for bookkeeping firms — flags judgment-heavy transactions for senior reviewers."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3.0.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
