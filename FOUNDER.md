@@ -13,8 +13,13 @@ architecture or feature expansion, point back here.
 An AI Review Copilot for bookkeeping firms: a semantic review assistant that
 tells a senior accountant **where to spend attention** in a completed ledger.
 
-It reviews every transaction, flags only the ones requiring accounting
-judgment, and explains why. The reviewer decides. The AI never does.
+The unit of output is the **Review Issue** — a review-worthy *pattern* with
+supporting evidence ("why did Amazon jump this month?", "why is R&M 4× normal?"),
+not a flagged transaction. Reviewers review patterns; transactions are the
+evidence under a pattern, not the unit of review. Each issue explains itself in
+terms the reviewer can trace back to their own ledger, and proposes a
+verification step — never an accounting treatment. The reviewer decides. The AI
+never does. (See `docs/DOMAIN.md` for the full model.)
 
 Mental model: **GitHub Pull Requests for accounting review.**
 
@@ -58,9 +63,13 @@ Boring and readable beats clever. No microservices, no premature
 abstractions, no enterprise patterns. Deleting code is better than adding it.
 
 **AI usage.** LLMs reason, explain, prioritize, and summarize. They do not
-make accounting decisions. Pattern detection uses deterministic logic
-(rules + statistics) wherever possible; the LLM handles only the semantic
-residue that rules cannot.
+make accounting decisions. Deterministic logic is a **context-compiler, not a
+gatekeeper**: it computes the ledger profile the LLM judges with (per-vendor
+history, per-account distributions and deltas, new-vendor flags, journal
+clustering, round-number, etc.) and produces *signals*, not verdicts. It does
+**not** suppress candidates before assessment. Whether any deterministic signal
+graduates to a pre-filter is a later decision we must *earn* with
+reviewer-agreement evidence — not assume.
 
 **Pull requests.** Every PR answers "what did we learn?" — not "what did
 we ship?"
