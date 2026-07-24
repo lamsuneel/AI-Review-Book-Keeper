@@ -60,6 +60,17 @@ different transactions and mean the same thing.
   what deserves your attention," not "look what we built."
 - **Fixture numbers never appear in a validation report.** They live in CI.
 
+## Triage vs. stored classification (surprises)
+
+During a session, each **surprise** (an LLM issue matching neither the baseline
+nor any reviewer question) gets a live **TRIAGE** reaction on the session
+worksheet — `agrees immediately | disagrees immediately | needs discussion` — to
+keep the session moving. Triage is **transient session data**, not the record.
+The **stored** classification is the single DOMAIN.md taxonomy
+(`valuable_surprise | valid_alternative_reasoning | noise`), assigned *after*
+discussion. Every `needs discussion` item must resolve to a stored class before
+the session ends; the taxonomy is what we keep, triage is scaffolding we discard.
+
 ## The annotation CSV
 
 One row per (question, examined transaction):

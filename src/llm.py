@@ -28,9 +28,11 @@ the ceiling is never the constraint — focus is.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
+import subprocess
 from collections import Counter
 from dataclasses import dataclass, field
 
@@ -163,6 +165,62 @@ class LLMRun:
         return self.cost_usd(config) / self.n_transactions * 1000
 
 
+# --- Lab notebook ----------------------------------------------------------
+# Not production logging — experimental-condition preservation. Every API call
+# is persisted so "why did the model flag this?" is answerable by inspection
+# weeks later. The git commit and the prompt-template hash are captured by the
+# repo, not by hand.
+
+
+def _git_commit() -> str:
+    try:
+        out = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True,
+                             text=True, timeout=5)
+        return out.stdout.strip() or "unknown"
+    except Exception:
+        return "unknown"
+
+
+@dataclass
+class RunNotebook:
+    run_dir: str
+    git_commit: str
+    template_sha256: str  # hash of the system-prompt template (the two-layer template)
+    _n: int = 0
+
+    def record(self, *, kind: str, batch_label: str, refs: list[str], system: str,
+               user: str, digest: str, response: LLMResponse, config: LLMConfig) -> None:
+        self._n += 1
+        pkg = {
+            "call_index": self._n,
+            "kind": kind,  # "batch" | "repair"
+            "batch_id": batch_label,
+            "transaction_refs": refs,
+            "model": config.model,
+            "params": {"effort": config.effort, "thinking": config.thinking,
+                       "include_text": config.include_text, "max_tokens": config.max_tokens},
+            "digest": digest,
+            "system_prompt": system,
+            "user_prompt": user,
+            "raw_response": response.text,
+            "stop_reason": response.stop_reason,
+            "usage": {"input_tokens": response.input_tokens,
+                      "output_tokens": response.output_tokens,
+                      "cache_read_tokens": response.cache_read_tokens},
+            "git_commit": self.git_commit,
+            "prompt_template_sha256": self.template_sha256,
+        }
+        with open(os.path.join(self.run_dir, f"call-{self._n:04d}.json"),
+                  "w", encoding="utf-8") as fh:
+            json.dump(pkg, fh, indent=2, ensure_ascii=False)
+
+
+def open_notebook(system: str, run_dir: str) -> RunNotebook:
+    os.makedirs(run_dir, exist_ok=True)
+    return RunNotebook(run_dir=run_dir, git_commit=_git_commit(),
+                       template_sha256=hashlib.sha256(system.encode("utf-8")).hexdigest())
+
+
 # --- Digest ----------------------------------------------------------------
 
 
@@ -183,13 +241,35 @@ def build_digest(ledger: Ledger, profile: LedgerProfile) -> str:
             f"  {acct.name} | n={acct.count} | total={total:,.0f} | "
             f"mean={acct.mean:,.0f} | std={acct.std:,.0f} | {months}"
         )
+    # Significant vendors = top-15 by spend UNION every vendor touching >=2
+    # accounts. Per-vendor accounts-touched + monthly totals travel in every
+    # call so per-account batching can't hide a vendor split across accounts
+    # (e.g. one vendor in Repairs and Fixed Assets). Confound prevention.
+    top = sorted(profile.vendors.values(), key=lambda v: -v.total)[:15]
+    multi = [v for v in profile.vendors.values() if len(v.accounts) >= 2]
+    seen, significant = set(), []
+    for v in sorted({id(x): x for x in top + multi}.values(), key=lambda v: -v.total):
+        if v.name not in seen:
+            seen.add(v.name)
+            significant.append(v)
+
     lines.append("")
-    lines.append("Top vendors by spend (name | n | total | max single | first seen):")
-    for v in sorted(profile.vendors.values(), key=lambda v: -v.total)[:15]:
+    lines.append("Significant vendors (name | n | total | max | first | accounts | monthly):")
+    for v in significant:
+        months = " ".join(f"{k}={val:,.0f}" for k, val in sorted(v.monthly_totals.items()))
+        accts = "; ".join(v.accounts) or "(none)"
         lines.append(
-            f"  {v.name} | n={v.count} | total={v.total:,.0f} | "
-            f"max={v.max:,.0f} | first={v.first_date}"
+            f"  {v.name} | n={v.count} | total={v.total:,.0f} | max={v.max:,.0f} | "
+            f"first={v.first_date} | accounts=[{accts}] | {months}"
         )
+
+    cross = [v for v in significant if len(v.accounts) >= 2]
+    if cross:
+        lines.append("")
+        lines.append("CROSS-ACCOUNT vendors (spend split across accounts — look for "
+                     "patterns per-account batching can't see alone):")
+        for v in cross:
+            lines.append(f"  {v.name}: {'; '.join(v.accounts)}")
     if profile.je_clusters:
         lines.append("")
         lines.append("Journal-entry clusters (date -> refs):")
@@ -251,15 +331,29 @@ def format_batch(batch: Batch, profile: LedgerProfile, include_text: bool) -> st
 # --- Prompts ---------------------------------------------------------------
 
 
-def build_system_prompt() -> str:
-    return f"""You are helping a SENIOR ACCOUNTANT decide where to spend review \
-attention on a completed client ledger. You do NOT make accounting decisions — \
-you identify concerns a reviewer should investigate and cite the evidence.
+# Prompt template — TWO LAYERS (see FOUNDER.md "Prompt engineering"). The layers
+# are kept in separate constants so a diff makes obvious which one changed:
+#   _JUDGMENT_LAYER   — what the model thinks; FROZEN except on reviewer evidence.
+#   _COMPLIANCE_LAYER — how the model speaks; may change on engineering evidence.
+
+# ---- JUDGMENT LAYER — FROZEN except in response to reviewer evidence ----
+_JUDGMENT_LAYER = """\
+You are helping a SENIOR ACCOUNTANT decide where to spend review attention on a \
+completed client ledger. You do NOT make accounting decisions — you identify \
+concerns a reviewer should investigate and cite the evidence.
 
 Each concern you surface costs the reviewer real minutes to check. A SHORT list \
 of well-supported concerns beats a long list of possibilities. When unsure, do \
 not raise it.
 
+Judgment guidance:
+- reasons must name numbers/accounts/dates a reviewer can trace, never scores.
+- An issue may cite exactly one transaction; singletons are fine.
+- Do not raise an issue for ordinary, well-explained activity.
+- The reviewer decides; you never do."""
+
+# ---- COMPLIANCE LAYER — may change on engineering evidence ----
+_COMPLIANCE_LAYER = f"""\
 Return ONLY JSON, no prose, in this exact shape:
 {{"issues": [
   {{
@@ -276,16 +370,25 @@ Return ONLY JSON, no prose, in this exact shape:
   }}
 ]}}
 
-Hard rules:
+Output rules:
 - Every evidence item must cite refs and/or accounts that ACTUALLY appear in the \
 data given to you. Never invent a ref or account. At least one evidence item per \
 issue must cite a transaction ref.
 - suggested_investigation must be interrogative — a question or 'Verify/Confirm/\
 Review ...' step. NEVER prescribe an accounting treatment (no 'reclassify', \
-'capitalize', 'book to ...'). The reviewer decides.
-- reasons must name numbers/accounts/dates a reviewer can trace, never scores.
-- An issue may cite exactly one transaction; singletons are fine.
-- Do not raise an issue for ordinary, well-explained activity."""
+'capitalize', 'book to ...')."""
+
+
+def build_system_prompt() -> str:
+    """Assemble the two-layer template. Do not inline judgment content here —
+    edit _JUDGMENT_LAYER (reviewer evidence) or _COMPLIANCE_LAYER (engineering)
+    so the layer boundary stays checkable in diffs."""
+    return (
+        "=== JUDGMENT LAYER (what to surface — frozen except on reviewer evidence) ===\n"
+        f"{_JUDGMENT_LAYER}\n\n"
+        "=== COMPLIANCE LAYER (how to format — engineering evidence) ===\n"
+        f"{_COMPLIANCE_LAYER}"
+    )
 
 
 def build_user_prompt(digest: str, batch: Batch, profile: LedgerProfile,
@@ -475,8 +578,10 @@ def consolidate(issues: list[ReviewIssue], ledger: Ledger) -> list[ReviewIssue]:
 
 def run_llm_discovery(ledger: Ledger, profile: LedgerProfile, client=None,
                       config: LLMConfig | None = None,
-                      log=None) -> LLMRun:
-    """Run the batched LLM discovery and return issues + run metrics."""
+                      log=None, run_dir: str | None = None) -> LLMRun:
+    """Run the batched LLM discovery and return issues + run metrics.
+
+    If ``run_dir`` is given, a lab-notebook package is written per API call."""
     config = config or LLMConfig()
     if client is None:
         client = AnthropicClient.from_env(config)
@@ -491,13 +596,20 @@ def run_llm_discovery(ledger: Ledger, profile: LedgerProfile, client=None,
     raw_valid: list[dict] = []
 
     system = build_system_prompt()
+    notebook = open_notebook(system, run_dir) if run_dir else None
+
     for batch in batches:
+        label = batch.account + (f" (part {batch.part})" if batch.part else "")
+        refs = [t.ref for t in batch.transactions]
         user = build_user_prompt(digest, batch, profile, config.include_text)
         resp = client.complete(system, user)
         in_tok += resp.input_tokens
         out_tok += resp.output_tokens
         cache_tok += resp.cache_read_tokens
         n_calls += 1
+        if notebook:
+            notebook.record(kind="batch", batch_label=label, refs=refs, system=system,
+                            user=user, digest=digest, response=resp, config=config)
 
         parsed = parse_issues(resp.text)
         valid, invalid = [], []
@@ -513,6 +625,9 @@ def run_llm_discovery(ledger: Ledger, profile: LedgerProfile, client=None,
             out_tok += resp2.output_tokens
             cache_tok += resp2.cache_read_tokens
             n_calls += 1
+            if notebook:
+                notebook.record(kind="repair", batch_label=label, refs=refs, system=system,
+                                user=repair, digest=digest, response=resp2, config=config)
 
             repaired = parse_issues(resp2.text)
             fixed_titles: set[str] = set()

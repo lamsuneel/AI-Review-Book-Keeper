@@ -1,6 +1,6 @@
-# DOMAIN.md — Domain Model (v2)
+# DOMAIN.md — Domain Model (v3)
 
-**Status:** v2 · prose-first. This document is the source of truth. Code
+**Status:** v3 · prose-first. This document is the source of truth. Code
 mirrors this model, not the other way around. When the model and the code
 disagree, the code is wrong until this document is changed. Changing this
 document is allowed and expected — but every change records, in the Changelog,
@@ -134,6 +134,16 @@ participates in matching.
 - **Fixtures are not validation.** Synthetic ledgers + synthetic expected
   issues are engineering fixtures (regression/CI only) and can never yield a
   product-quality number. Only real ledgers + `ReviewerAnnotation`s count.
+- **Three kinds of validity — only one is ours to guarantee.** A generated
+  issue can be checked at three levels: *syntax* (is it valid JSON?), *schema*
+  (are the fields present and typed correctly?), and *business validity* (does
+  the cited evidence exist, are the refs real, is the investigation phrased as
+  a question, is provenance complete?). Only **business validity** matters to
+  the product, and it is enforced in **our** code, permanently — never
+  delegated to a provider's structured-output guarantee. A provider can promise
+  syntax and schema; it can never know whether ref `T0142` exists in *this*
+  ledger or whether a sentence prescribes a treatment. That check is ours to
+  own or the product's core promise (traceability) is unenforced.
 
 ## Framing (internal vocabulary only — never reviewer-facing)
 
@@ -147,6 +157,13 @@ never the words "hypothesis" or "confidence".
 
 ## Changelog
 
+- **v3** — Codified the *three kinds of validity* (syntax / schema / business
+  validity) and that only business validity matters to the product and is
+  enforced permanently in our code. Learned: provider structured-output
+  guarantees can cover syntax and schema but can NEVER cover business validity —
+  a provider cannot know whether a cited ref exists in this ledger or whether an
+  investigation prescribes a treatment. If we delegate that check, the product's
+  traceability promise is unenforced.
 - **v2** — Added the *demotion, not deletion* invariant (signals keep
   provenance as reasons even when they lose issue ownership) and the
   reviewer-only `surprise_class` taxonomy field. Learned: (1) the deterministic

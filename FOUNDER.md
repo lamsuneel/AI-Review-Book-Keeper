@@ -71,6 +71,16 @@ clustering, round-number, etc.) and produces *signals*, not verdicts. It does
 graduates to a pre-filter is a later decision we must *earn* with
 reviewer-agreement evidence — not assume.
 
+**Prompt engineering.** Prompt engineering is product development and follows
+the same discipline as features. The prompt has two layers. **Compliance
+instructions** (output schema, ref-citation format, question-phrasing
+enforcement) govern *how the model speaks* and may be changed on engineering
+evidence. **Judgment content** (what counts as review-worthy, prioritization,
+the miserliness framing) governs *what the model thinks* and is **frozen except
+in response to reviewer evidence** — no judgment-layer change without new
+reviewer-agreement data. The prompt template keeps the two layers visibly
+separated (labeled sections) so this rule is mechanically checkable in a diff.
+
 **Pull requests.** Every PR answers "what did we learn?" — not "what did
 we ship?"
 

@@ -176,6 +176,29 @@ def test_cost_accounting():
     assert round(run.cost_per_1000(cfg), 2) == 9.00
 
 
+def test_lab_notebook_writes_a_package_per_call(tmp_path):
+    amazon = tx("Amazon", "Office Supplies", 3000.0, memo="monitors", num="N1")
+    ledger = _ledger([amazon])
+    profile = compute_profile(ledger)
+    resp = _issue_json("Cap — Amazon", "capex_vs_opex", "N1", "Office Supplies",
+                       "Verify the threshold.")
+    run_dir = tmp_path / "run"
+    run_llm_discovery(ledger, profile, client=FakeClient([resp]),
+                      config=LLMConfig(), run_dir=str(run_dir))
+
+    files = sorted(run_dir.glob("call-*.json"))
+    assert len(files) == 1
+    pkg = json.loads(files[0].read_text(encoding="utf-8"))
+    assert pkg["batch_id"].startswith("Office Supplies")
+    assert pkg["transaction_refs"] == ["N1"]
+    assert pkg["model"] == "claude-sonnet-4-6"
+    assert pkg["raw_response"]  # the canned response is preserved verbatim
+    for key in ("system_prompt", "user_prompt", "digest"):
+        assert pkg[key]
+    assert len(pkg["prompt_template_sha256"]) == 64  # sha256 hex, repo-enforced
+    assert "git_commit" in pkg  # repo-enforced (hash or 'unknown')
+
+
 def test_discover_issues_llm_contract_wrapper():
     amazon = tx("Amazon", "Office Supplies", 3000.0, num="N1")
     ledger = _ledger([amazon])

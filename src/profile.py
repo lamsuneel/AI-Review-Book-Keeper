@@ -115,6 +115,8 @@ class VendorStat:
     max: float
     first_ref: str
     first_date: _date | None
+    accounts: list[str]  # distinct accounts this vendor touched, in first-seen order
+    monthly_totals: dict[str, float]  # "YYYY-MM" -> sum of abs amounts
 
 
 @dataclass
@@ -199,10 +201,13 @@ def _build_vendor_stats(txns: list[Transaction]) -> dict[str, VendorStat]:
         if not key:
             continue
         amt = abs(t.amount)
+        month = _month_key(t.date)
         if key not in stats:
             stats[key] = VendorStat(
                 name=t.name.strip(), refs=[t.ref], count=1, total=amt, mean=amt,
                 max=amt, first_ref=t.ref, first_date=t.date,
+                accounts=([t.account] if t.account else []),
+                monthly_totals={month: amt},
             )
         else:
             s = stats[key]
@@ -211,6 +216,9 @@ def _build_vendor_stats(txns: list[Transaction]) -> dict[str, VendorStat]:
             s.total += amt
             s.mean = s.total / s.count
             s.max = max(s.max, amt)
+            if t.account and t.account not in s.accounts:
+                s.accounts.append(t.account)
+            s.monthly_totals[month] = s.monthly_totals.get(month, 0.0) + amt
     return stats
 
 

@@ -12,6 +12,7 @@ __pycache__/
 
 # LLM run artifacts (generated)
 surprises.jsonl
+runs/
 
 # Pipeline output (generated, not source)
 review_queue.md

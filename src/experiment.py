@@ -114,6 +114,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--runs", type=int, default=2,
                         help="LLM runs for the stability check (>=2 measures overlap).")
     parser.add_argument("--out", default="surprises.jsonl")
+    parser.add_argument("--run-dir", default=None,
+                        help="Lab-notebook base dir (default runs/<timestamp>). Every API "
+                             "call is persisted with the git commit and prompt-template hash.")
     args = parser.parse_args(argv)
 
     if hasattr(sys.stdout, "reconfigure"):
@@ -135,10 +138,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.model:
         config.model = args.model
 
+    from datetime import datetime
+
+    base_dir = args.run_dir or os.path.join("runs", datetime.now().strftime("%Y%m%d-%H%M%S"))
     try:
         runs = [run_llm_discovery(ledger, profile, config=config,
-                                  log=lambda m: print(m, file=sys.stderr))
-                for _ in range(max(1, args.runs))]
+                                  log=lambda m: print(m, file=sys.stderr),
+                                  run_dir=os.path.join(base_dir, f"run-{i + 1}"))
+                for i in range(max(1, args.runs))]
     except LLMKeyMissing as e:
         print(f"error: {e}", file=sys.stderr)
         return 2
@@ -203,6 +210,9 @@ def main(argv: list[str] | None = None) -> int:
     if len(runs) >= 2:
         total = sum(r.cost_usd(config) for r in runs)
         out.append(f"  (all {len(runs)} runs incl. stability: ${total:.4f})")
+    out.append("")
+    out.append(f"Lab notebook: {base_dir}/ (one JSON package per API call, with the "
+               f"git commit and prompt-template hash).")
     out.append("")
 
     print("\n".join(out))

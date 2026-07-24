@@ -60,10 +60,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.strategy == "llm":
         from .llm import LLMConfig, LLMKeyMissing, run_llm_discovery
 
+        from datetime import datetime
+
         config = LLMConfig(include_text=not args.no_text)
+        run_dir = os.path.join("runs", datetime.now().strftime("%Y%m%d-%H%M%S"), "llm")
         try:
             run = run_llm_discovery(ledger, profile, config=config,
-                                    log=lambda m: print(m, file=sys.stderr))
+                                    log=lambda m: print(m, file=sys.stderr),
+                                    run_dir=run_dir)
         except LLMKeyMissing as e:
             print(f"error: {e}", file=sys.stderr)
             return 2
