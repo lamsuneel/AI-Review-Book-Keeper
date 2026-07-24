@@ -12,7 +12,7 @@ cost per 1,000 transactions.
 Matching reuses evidence overlap (Jaccard >= threshold over transaction refs);
 issue wording never participates. Surprises are NEVER auto-scored as false
 positives — on fixtures their status is "unclassified until a reviewer sees
-them" (DOMAIN.md surprise_class). Needs ANTHROPIC_API_KEY; fails clearly without.
+them" (DOMAIN.md surprise_class). Needs OPENAI_API_KEY; fails clearly without.
 """
 
 from __future__ import annotations

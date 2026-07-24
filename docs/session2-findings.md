@@ -5,18 +5,23 @@ harness to observe it. Success is a prompt design + output format we're
 confident showing a design partner — plus honest answers to the engineering
 questions below. Fixture numbers measure the harness, not the product.
 
-**Status of the live numbers.** The build is complete and all 36 tests pass
+**Provider:** the LLM strategy runs on the **OpenAI Responses API** with model
+**`gpt-5.5`** (a reasoning model; `reasoning.effort` = `medium`). Everything else
+— prompts, JSON schema, validation, repair, provenance, metrics, lab notebook —
+is provider-agnostic and unchanged.
+
+**Status of the live numbers.** The build is complete and all 37 tests pass
 offline (the client is mocked, one canned response replayed). The
 **live-measured** answers — schema-compliance rate, dropped-for-provenance
 count, stability overlap, cost, and the verbatim surprises — require one real
-keyed run, which this environment can't make (no `ANTHROPIC_API_KEY`). Each is
+keyed run, which this environment can't make (no `OPENAI_API_KEY`). Each is
 marked **PENDING FIRST KEYED RUN** with the exact command to produce it. The
 design answers are final now.
 
 ## How to produce the live numbers
 
 ```bash
-export ANTHROPIC_API_KEY=...          # never committed; .env is gitignored
+export OPENAI_API_KEY=...              # never committed; .env is gitignored
 uv run python data/synthetic/generate.py
 # Full experiment: three sets (surprises first), stability, cost, surprises.jsonl
 uv run python -m src.experiment \
@@ -62,8 +67,8 @@ consolidation rather than the batch axis.
 | **Largest single call (sys + digest + batch)** | **~5,200** |
 
 Ledger-wide: batch detail totals ~13,000 tokens sent once; the digest repeats
-across 20 calls (~16,900 tokens). Largest call ~5.2K against Sonnet 4.6's **1M**
-window — the context ceiling is never the constraint. **Batching is for
+across 20 calls (~16,900 tokens). Largest call ~5.2K against gpt-5.5's large
+context window — the context ceiling is never the constraint. **Batching is for
 reasoning focus and precision, not to fit.** (The repeated digest is the obvious
 cost lever: prompt-caching the system+digest prefix would cut most of that
 16.9K; deferred this session by the "no caching layer" constraint — noted for
@@ -73,9 +78,10 @@ later.)
 
 **PENDING FIRST KEYED RUN.** What's built and how it's measured:
 
-- The model is asked for strict JSON (`{"issues": [...]}`). We **do not** rely on
-  `output_config.format` — Sonnet 4.6 isn't in the guaranteed structured-output
-  set — so parsing is tolerant (strips fences, extracts the outermost JSON) and
+- The model is asked for strict JSON (`{"issues": [...]}`). We **do not** delegate
+  correctness to any provider structured-output guarantee (per DOMAIN.md v3, only
+  *business* validity matters and it is ours to enforce) — so parsing is tolerant
+  (strips fences, extracts the outermost JSON) and
   every issue is **strictly validated in code**: schema shape, category ∈ the
   fixed vocabulary, evidence `kind` ∈ the enum, and **provenance** — every cited
   `ref`/`account` must exist in the ledger, and at least one evidence item must
@@ -102,16 +108,18 @@ stability halts before we trust any LLM numbers.
 ## 5. Cost per 1,000 transactions
 
 **PENDING FIRST KEYED RUN** for the measured figure. Pricing used:
-`claude-sonnet-4-6` = **$3 / $15 per 1M** input/output tokens (from the current
-reference), in a config table so a model swap re-prices automatically.
+`gpt-5.5` = **$5 / $30 per 1M** input/output tokens, with **cached input at
+$0.50 = 0.1× input** (exactly what `cost_usd` charges for cache reads), in a
+config table so a model swap re-prices automatically.
 
 Order-of-magnitude estimate from the measured token sizes (20 calls, no
-repairs): input ≈ (440+845)×20 + 13,000 ≈ **38.6K tokens** → ~$0.12. Output is
-unmeasured and **adaptive thinking counts against it**, so the run cost is
-dominated by output+thinking — plausibly **~$0.20–0.50 per fixture run**, i.e.
-**~$0.40–1.00 per 1,000 transactions** at `medium` effort. Treat this as a floor
-to be replaced by the measured number. Effort and the repeated-digest caching
-are the two levers if it needs to come down.
+repairs): input ≈ (440+845)×20 + 13,000 ≈ **38.6K tokens** → ~$0.19 at full
+price (less in practice — OpenAI auto-caches the repeated system+digest prefix
+at 0.1×). Output is unmeasured and **reasoning tokens count against it at $30/1M**,
+so run cost is dominated by output+reasoning — plausibly **~$0.30–0.80 per
+fixture run** at `medium` effort; gpt-5.5 is more token-efficient than prior
+models, which pulls the other way. Treat this as a rough floor to be replaced by
+the measured number.
 
 ## 6. The surprises
 

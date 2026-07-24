@@ -38,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--strategy", choices=["baseline", "llm"], default="baseline",
         help="Discovery strategy. 'baseline' is deterministic (no key). 'llm' "
-        "uses the Anthropic API (needs ANTHROPIC_API_KEY).",
+        "uses the OpenAI API (needs OPENAI_API_KEY).",
     )
     parser.add_argument(
         "--no-text", action="store_true",

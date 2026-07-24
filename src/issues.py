@@ -465,7 +465,7 @@ def discover_issues_llm(ledger: Ledger, profile: LedgerProfile, client=None,
     The heavy machinery (client, prompt, batching, provenance) lives in
     ``llm.py``; this stays here so both strategies share one signature in one
     place. For run metrics (tokens, cost, dropped-for-provenance) call
-    ``llm.run_llm_discovery`` directly. Requires ANTHROPIC_API_KEY unless a
+    ``llm.run_llm_discovery`` directly. Requires OPENAI_API_KEY unless a
     ``client`` is injected (tests inject a fake)."""
     from .llm import run_llm_discovery  # lazy: breaks the issues<->llm import cycle
 

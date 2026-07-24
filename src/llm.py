@@ -3,7 +3,7 @@
 The product-contract function ``discover_issues_llm(ledger, profile)`` lives in
 ``issues.py`` alongside the deterministic baseline (founder ruling). This module
 holds the supporting machinery so ``issues.py`` doesn't bloat with SDK and
-prompt detail: the Anthropic client wrapper, the ledger digest, account-grouped
+prompt detail: the OpenAI client wrapper, the ledger digest, account-grouped
 batching, prompt construction, JSON parsing, provenance validation + a single
 repair attempt, cross-batch consolidation, and cost accounting.
 
@@ -17,7 +17,7 @@ prompt). Everything the model asserts must be grounded in the ledger — an issu
 whose evidence cites a ref/account that doesn't exist is repaired once, then
 dropped and counted (``dropped_for_provenance``).
 
-Context-budget arithmetic (why we batch even though Sonnet 4.6 has a 1M window):
+Context-budget arithmetic (why we batch even though the model has a large window):
 batching is for REASONING QUALITY and PRECISION, not just to fit. One call per
 account keeps the model focused on a pattern a reviewer thinks in ("why is this
 account off?"), and the digest carries per-vendor/per-account context into every
@@ -47,16 +47,16 @@ from .issues import (
 )
 from .profile import LedgerProfile
 
-DEFAULT_MODEL = "claude-sonnet-4-6"
+# GPT-5.5 is available in the OpenAI API (verified against the model docs), so
+# it is the model per the "gpt-5.5 if available, else gpt-5" rule.
+DEFAULT_MODEL = "gpt-5.5"
 
-# Per-model pricing, USD per 1M tokens (input, output). Looked up from the
-# Anthropic pricing reference; update when pricing moves. Sonnet 5 also has a
-# time-limited intro rate — use standard here to avoid over-optimistic numbers.
+# Per-model pricing, USD per 1M tokens (input, output). From OpenAI's model
+# pricing; verify when pricing moves. gpt-5.5 cached input is $0.50 = 0.1x input,
+# which is exactly what cost_usd() charges for cache reads.
 PRICES: dict[str, tuple[float, float]] = {
-    "claude-sonnet-4-6": (3.00, 15.00),
-    "claude-sonnet-5": (3.00, 15.00),
-    "claude-opus-4-8": (5.00, 25.00),
-    "claude-haiku-4-5": (1.00, 5.00),
+    "gpt-5.5": (5.00, 30.00),
+    "gpt-5": (1.25, 10.00),  # fallback per the requirement (not used while 5.5 is available)
 }
 
 # Treatment verbs banned from suggested_investigation (the AI never decides).
@@ -70,20 +70,20 @@ _INVESTIGATION_OPENERS = ("verify", "confirm", "review", "check", "investigate",
 
 
 class LLMKeyMissing(RuntimeError):
-    """Raised when ANTHROPIC_API_KEY is absent. Message tells the user what to do."""
+    """Raised when OPENAI_API_KEY is absent. Message tells the user what to do."""
 
 
 @dataclass
 class LLMConfig:
     model: str = DEFAULT_MODEL
     max_tokens: int = 8_000
-    effort: str | None = "medium"  # low|medium|high|max on Sonnet 4.6; None = default
-    thinking: bool = True  # adaptive thinking
+    effort: str | None = "medium"  # reasoning.effort: none|low|medium|high|xhigh; None = default
+    thinking: bool = True  # retained for config parity; OpenAI reasoning is set via effort
     include_text: bool = True  # False = --no-text ablation (strip vendor/memo)
     max_batch_rows: int = 200
 
     def price(self) -> tuple[float, float]:
-        return PRICES.get(self.model, (3.00, 15.00))
+        return PRICES.get(self.model, PRICES["gpt-5.5"])
 
 
 @dataclass
@@ -95,47 +95,53 @@ class LLMResponse:
     stop_reason: str | None = None
 
 
-class AnthropicClient:
-    """Thin wrapper over the Anthropic SDK. Constructed only when a real run is
-    requested; tests inject a fake with the same ``complete`` shape."""
+class OpenAIClient:
+    """Thin wrapper over the OpenAI SDK (Responses API). Constructed only when a
+    real run is requested; tests inject a fake with the same ``complete`` shape."""
 
     def __init__(self, sdk_client, config: LLMConfig):
         self._client = sdk_client
         self._config = config
 
     @classmethod
-    def from_env(cls, config: LLMConfig) -> "AnthropicClient":
-        key = os.environ.get("ANTHROPIC_API_KEY")
+    def from_env(cls, config: LLMConfig) -> "OpenAIClient":
+        key = os.environ.get("OPENAI_API_KEY")
         if not key:
             raise LLMKeyMissing(
-                "ANTHROPIC_API_KEY is not set. The LLM strategy needs it - export "
+                "OPENAI_API_KEY is not set. The LLM strategy needs it - export "
                 "it in your shell (never commit it; .env is gitignored). The "
                 "baseline strategy (--strategy baseline) needs no key."
             )
-        import anthropic  # imported lazily so offline tests never need it
+        from openai import OpenAI  # imported lazily so offline tests never need it
 
-        return cls(anthropic.Anthropic(api_key=key), config)
+        return cls(OpenAI(api_key=key), config)
 
     def complete(self, system: str, user: str) -> LLMResponse:
         kwargs = {
             "model": self._config.model,
-            "max_tokens": self._config.max_tokens,
-            "system": system,
-            "messages": [{"role": "user", "content": user}],
+            "instructions": system,
+            "input": user,
+            "max_output_tokens": self._config.max_tokens,
         }
-        if self._config.thinking:
-            kwargs["thinking"] = {"type": "adaptive"}
         if self._config.effort:
-            kwargs["output_config"] = {"effort": self._config.effort}
-        resp = self._client.messages.create(**kwargs)
-        text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
+            kwargs["reasoning"] = {"effort": self._config.effort}
+        resp = self._client.responses.create(**kwargs)
         u = resp.usage
+        total_in = getattr(u, "input_tokens", 0) or 0
+        details = getattr(u, "input_tokens_details", None)
+        cached = (getattr(details, "cached_tokens", 0) or 0) if details else 0
+        stop = getattr(resp, "status", None)
+        incomplete = getattr(resp, "incomplete_details", None)
+        if incomplete is not None and getattr(incomplete, "reason", None):
+            stop = f"{stop}:{incomplete.reason}"
         return LLMResponse(
-            text=text,
-            input_tokens=getattr(u, "input_tokens", 0) or 0,
+            text=getattr(resp, "output_text", "") or "",
+            # Uncached input remainder, mirroring the prior client's semantics so
+            # cost_usd (which charges cache reads at 0.1x) stays correct.
+            input_tokens=max(0, total_in - cached),
             output_tokens=getattr(u, "output_tokens", 0) or 0,
-            cache_read_tokens=getattr(u, "cache_read_input_tokens", 0) or 0,
-            stop_reason=getattr(resp, "stop_reason", None),
+            cache_read_tokens=cached,
+            stop_reason=stop,
         )
 
 
@@ -584,7 +590,7 @@ def run_llm_discovery(ledger: Ledger, profile: LedgerProfile, client=None,
     If ``run_dir`` is given, a lab-notebook package is written per API call."""
     config = config or LLMConfig()
     if client is None:
-        client = AnthropicClient.from_env(config)
+        client = OpenAIClient.from_env(config)
     log = log or (lambda msg: None)
 
     valid_refs = {t.ref for t in ledger.transactions}

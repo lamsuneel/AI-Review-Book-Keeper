@@ -9,13 +9,13 @@ import pytest
 from src.ingest import Ledger, Transaction
 from src.issues import discover_issues_llm
 from src.llm import (
-    AnthropicClient,
     LLMConfig,
     LLMKeyMissing,
     LLMResponse,
     LLMRun,
     build_batches,
     format_batch,
+    OpenAIClient,
     run_llm_discovery,
     validate_issue,
 )
@@ -160,20 +160,20 @@ def test_no_text_ablation_strips_vendor_and_memo():
 
 
 def test_from_env_missing_key_raises(monkeypatch):
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     with pytest.raises(LLMKeyMissing) as e:
-        AnthropicClient.from_env(LLMConfig())
-    assert "ANTHROPIC_API_KEY" in str(e.value)
+        OpenAIClient.from_env(LLMConfig())
+    assert "OPENAI_API_KEY" in str(e.value)
 
 
 def test_cost_accounting():
     run = LLMRun(issues=[], input_tokens=1_000_000, output_tokens=100_000,
                  cache_read_tokens=0, n_calls=5, dropped_for_provenance=0,
-                 n_transactions=500, model="claude-sonnet-4-6", include_text=True)
-    cfg = LLMConfig(model="claude-sonnet-4-6")
-    # 1M in * $3 + 0.1M out * $15 = 3 + 1.5 = $4.50
-    assert round(run.cost_usd(cfg), 2) == 4.50
-    assert round(run.cost_per_1000(cfg), 2) == 9.00
+                 n_transactions=500, model="gpt-5.5", include_text=True)
+    cfg = LLMConfig(model="gpt-5.5")
+    # 1M in * $5 + 0.1M out * $30 = 5 + 3 = $8.00
+    assert round(run.cost_usd(cfg), 2) == 8.00
+    assert round(run.cost_per_1000(cfg), 2) == 16.00
 
 
 def test_lab_notebook_writes_a_package_per_call(tmp_path):
@@ -191,7 +191,7 @@ def test_lab_notebook_writes_a_package_per_call(tmp_path):
     pkg = json.loads(files[0].read_text(encoding="utf-8"))
     assert pkg["batch_id"].startswith("Office Supplies")
     assert pkg["transaction_refs"] == ["N1"]
-    assert pkg["model"] == "claude-sonnet-4-6"
+    assert pkg["model"] == "gpt-5.5"
     assert pkg["raw_response"]  # the canned response is preserved verbatim
     for key in ("system_prompt", "user_prompt", "digest"):
         assert pkg[key]
