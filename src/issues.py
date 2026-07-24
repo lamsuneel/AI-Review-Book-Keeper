@@ -457,6 +457,21 @@ def discover_issues(
     return issues
 
 
+def discover_issues_llm(ledger: Ledger, profile: LedgerProfile, client=None,
+                        config=None) -> list[ReviewIssue]:
+    """LLM discovery strategy — same product contract as the baseline, so the two
+    are callable side by side (the baseline is the permanent control).
+
+    The heavy machinery (client, prompt, batching, provenance) lives in
+    ``llm.py``; this stays here so both strategies share one signature in one
+    place. For run metrics (tokens, cost, dropped-for-provenance) call
+    ``llm.run_llm_discovery`` directly. Requires ANTHROPIC_API_KEY unless a
+    ``client`` is injected (tests inject a fake)."""
+    from .llm import run_llm_discovery  # lazy: breaks the issues<->llm import cycle
+
+    return run_llm_discovery(ledger, profile, client=client, config=config).issues
+
+
 def _assign_presentation_order(issues: list[ReviewIssue], ledger: Ledger) -> None:
     """Rank deterministically: category weight -> total evidence $ -> evidence
     count. Records the driving components on each issue (founder ruling #2).
