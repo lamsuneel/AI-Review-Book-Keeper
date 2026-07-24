@@ -1,0 +1,508 @@
+"Bright Ledger Coffee Roasters, LLC"
+Transaction Detail by Account
+"January 1 - March 31, 2025"
+
+Date,Transaction Type,Num,Name,Memo/Description,Account,Split,Amount
+01/01/2025,Bill Payment,T0001,Prime Property Mgmt,Monthly studio rent,Rent Expense,Checking,"4,500.00"
+01/01/2025,Credit Card Expense,T0011,QuickBooks Online,Monthly subscription,Dues & Subscriptions,Credit Card,85.87
+01/01/2025,Credit Card Expense,T0012,Slack,Monthly subscription,Dues & Subscriptions,Credit Card,119.22
+01/01/2025,Credit Card Expense,T0013,Google Workspace,Monthly subscription,Dues & Subscriptions,Credit Card,67.30
+01/01/2025,Credit Card Expense,T0014,Adobe,Monthly subscription,Dues & Subscriptions,Credit Card,52.19
+01/01/2025,Credit Card Expense,T0015,Shopify,Monthly subscription,Dues & Subscriptions,Credit Card,105.05
+01/01/2025,Bill Payment,T0026,City Power & Light,Monthly utility,Utilities,Checking,297.64
+01/01/2025,Bill Payment,T0027,Metro Water,Monthly utility,Utilities,Checking,77.77
+01/01/2025,Bill Payment,T0028,Comcast Business,Monthly utility,Utilities,Checking,159.14
+01/01/2025,Bill,T0067,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,363.44"
+01/01/2025,Credit Card Expense,T0195,Amazon,Office/shop supplies,Office Supplies,Credit Card,281.31
+01/01/2025,Sales Receipt,T0327,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,076.18)"
+01/01/2025,Sales Receipt,T0370,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,549.55)"
+01/01/2025,Sales Receipt,T0397,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(837.39)
+01/02/2025,Expense,T0254,Square,Card processing fee,Merchant Account Fees,Checking,104.21
+01/02/2025,Sales Receipt,T0304,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,390.72)"
+01/02/2025,Sales Receipt,T0382,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,349.28)"
+01/02/2025,Credit Card Expense,T0440,Staples,Shop supplies,Office Supplies,Credit Card,319.37
+01/03/2025,Expense,T0004,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"12,111.54"
+01/03/2025,Credit Card Expense,T0237,Costco,Office/shop supplies,Office Supplies,Credit Card,87.24
+01/03/2025,Sales Receipt,T0352,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,199.19)"
+01/04/2025,Credit Card Expense,T0227,Amazon,Office/shop supplies,Office Supplies,Credit Card,239.25
+01/04/2025,Credit Card Expense,T0236,Amazon,Office/shop supplies,Office Supplies,Credit Card,101.80
+01/04/2025,Credit Card Expense,T0243,Staples,Office/shop supplies,Office Supplies,Credit Card,218.50
+01/04/2025,Expense,T0269,Square,Card processing fee,Merchant Account Fees,Checking,66.90
+01/04/2025,Sales Receipt,T0349,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(473.52)
+01/04/2025,Sales Receipt,T0379,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,148.98)"
+01/05/2025,Bill,T0090,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,477.94
+01/05/2025,Credit Card Expense,T0156,Staples,Office/shop supplies,Office Supplies,Credit Card,108.95
+01/05/2025,Credit Card Expense,T0478,Staples,Shop supplies,Office Supplies,Credit Card,348.74
+01/06/2025,Bill,T0120,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,490.18
+01/06/2025,Bill,T0148,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,631.08
+01/06/2025,Sales Receipt,T0300,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,151.16)"
+01/06/2025,Sales Receipt,T0347,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,989.90)"
+01/07/2025,Bill,T0059,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,568.13
+01/07/2025,Bill,T0097,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,118.80"
+01/07/2025,Bill,T0114,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,924.47
+01/07/2025,Bill,T0139,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,097.71"
+01/07/2025,Credit Card Expense,T0234,Staples,Office/shop supplies,Office Supplies,Credit Card,109.51
+01/07/2025,Sales Receipt,T0307,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(779.71)
+01/07/2025,Sales Receipt,T0372,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(656.41)
+
+01/07/2025,Sales Receipt,T0375,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(686.76)
+01/07/2025,Credit Card Expense,T0451,Costco,Shop supplies,Office Supplies,Credit Card,271.00
+01/08/2025,Bill,T0049,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,303.98"
+01/08/2025,Bill,T0107,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,816.87
+01/08/2025,Bill,T0112,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,209.31"
+01/08/2025,Bill,T0113,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,744.97
+01/08/2025,Sales Receipt,T0321,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,458.30)"
+01/08/2025,Credit Card Expense,T0432,Staples,Shop supplies,Office Supplies,Credit Card,151.12
+01/09/2025,Bill,T0039,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,127.39"
+01/09/2025,Bill,T0061,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,819.78
+01/09/2025,Bill,T0078,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,242.42"
+01/09/2025,Bill,T0117,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,474.76
+01/09/2025,Credit Card Expense,T0160,Staples,Office/shop supplies,Office Supplies,Credit Card,148.86
+01/09/2025,Credit Card Expense,T0172,Costco,Office/shop supplies,Office Supplies,Credit Card,325.44
+01/09/2025,Credit Card Expense,T0235,Costco,Office/shop supplies,Office Supplies,Credit Card,52.48
+01/09/2025,Sales Receipt,T0309,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,061.34)"
+01/09/2025,Credit Card Expense,T0427,Amazon,Shop supplies,Office Supplies,Credit Card,235.66
+01/10/2025,Bill,T0126,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,904.11
+01/10/2025,Bill,T0144,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,394.32"
+01/10/2025,Credit Card Expense,T0191,Staples,Office/shop supplies,Office Supplies,Credit Card,168.48
+01/10/2025,Sales Receipt,T0310,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,396.34)"
+01/10/2025,Sales Receipt,T0332,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,606.03)"
+01/10/2025,Sales Receipt,T0420,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,192.03)"
+01/10/2025,Credit Card Expense,T0466,Amazon,Shop supplies,Office Supplies,Credit Card,273.79
+01/11/2025,Bill,T0077,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,934.59
+01/11/2025,Expense,T0276,Square,Card processing fee,Merchant Account Fees,Checking,40.34
+01/11/2025,Sales Receipt,T0423,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,918.35)"
+01/12/2025,Expense,T0265,Square,Card processing fee,Merchant Account Fees,Checking,44.29
+01/12/2025,Expense,T0281,Square,Card processing fee,Merchant Account Fees,Checking,45.89
+01/12/2025,Sales Receipt,T0367,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(897.58)
+01/12/2025,Sales Receipt,T0383,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(726.93)
+01/13/2025,Bill,T0041,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,705.77
+01/13/2025,Bill,T0095,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,874.16
+01/13/2025,Sales Receipt,T0296,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,881.99)"
+01/13/2025,Sales Receipt,T0322,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,100.42)"
+01/13/2025,Sales Receipt,T0415,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,960.96)"
+01/13/2025,Credit Card Expense,T0430,Staples,Shop supplies,Office Supplies,Credit Card,91.57
+01/14/2025,Bill,T0134,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,690.91
+01/14/2025,Bill,T0135,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,008.55"
+01/14/2025,Sales Receipt,T0362,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,929.69)"
+Total Rent Expense,,,,,,,"13,500.00"
+01/14/2025,Credit Card Expense,T0484,Amazon,Dual 4K monitors + stands,Office Supplies,Credit Card,"3,200.00"
+01/15/2025,Bill,T0064,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,373.27"
+01/15/2025,Credit Card Expense,T0163,Staples,Office/shop supplies,Office Supplies,Credit Card,95.36
+01/15/2025,Sales Receipt,T0384,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,176.75)"
+01/15/2025,Credit Card Expense,T0479,Amazon,Shop supplies,Office Supplies,Credit Card,112.79
+01/16/2025,Credit Card Expense,T0174,Costco,Office/shop supplies,Office Supplies,Credit Card,319.01
+01/16/2025,Credit Card Expense,T0199,Staples,Office/shop supplies,Office Supplies,Credit Card,81.34
+01/16/2025,Sales Receipt,T0289,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,670.44)"
+01/16/2025,Sales Receipt,T0385,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,530.65)"
+01/16/2025,Credit Card Expense,T0470,Staples,Shop supplies,Office Supplies,Credit Card,154.26
+01/16/2025,Check,T0499,IRS,Estimated federal tax payment,Income Tax Expense,Checking,"5,000.00"
+01/17/2025,Expense,T0005,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"11,620.01"
+01/17/2025,Bill,T0079,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,922.81
+01/17/2025,Bill,T0124,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,110.05"
+01/17/2025,Bill,T0141,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,477.78"
+01/17/2025,Bill,T0147,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,739.08
+01/17/2025,Credit Card Expense,T0238,Staples,Office/shop supplies,Office Supplies,Credit Card,247.53
+01/17/2025,Sales Receipt,T0302,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,511.95)"
+01/17/2025,Sales Receipt,T0413,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,254.35)"
+01/17/2025,Credit Card Expense,T0459,Amazon,Shop supplies,Office Supplies,Credit Card,321.98
+01/18/2025,Bill,T0058,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,942.87
+01/18/2025,Credit Card Expense,T0228,Staples,Office/shop supplies,Office Supplies,Credit Card,96.34
+01/18/2025,Sales Receipt,T0393,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,941.65)"
+01/19/2025,Sales Receipt,T0338,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(435.68)
+01/19/2025,Sales Receipt,T0391,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,028.81)"
+01/19/2025,Sales Receipt,T0418,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,078.96)"
+01/19/2025,Credit Card Expense,T0438,Amazon,Shop supplies,Office Supplies,Credit Card,182.96
+01/20/2025,Bill,T0111,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,726.38
+01/20/2025,Bill,T0151,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,351.07"
+01/20/2025,Credit Card Expense,T0211,Amazon,Office/shop supplies,Office Supplies,Credit Card,158.74
+01/20/2025,Credit Card Expense,T0212,Costco,Office/shop supplies,Office Supplies,Credit Card,106.33
+01/20/2025,Sales Receipt,T0312,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,841.17)"
+01/20/2025,Sales Receipt,T0337,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,025.98)"
+01/20/2025,Sales Receipt,T0386,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,246.91)"
+01/20/2025,Credit Card Expense,T0483,Staples,Shop supplies,Office Supplies,Credit Card,243.03
+01/20/2025,Transfer,T0487,Owner Capital Contribution,Round funding to operating acct,Owner's Equity,Checking,"10,000.00"
+01/21/2025,Bill,T0060,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,864.38
+01/21/2025,Bill,T0072,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,448.85"
+01/21/2025,Bill,T0142,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,886.02
+01/21/2025,Credit Card Expense,T0242,Staples,Office/shop supplies,Office Supplies,Credit Card,73.51
+01/21/2025,Sales Receipt,T0325,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(755.74)
+01/21/2025,Sales Receipt,T0381,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(890.43)
+01/22/2025,Credit Card Expense,T0185,Costco,Office/shop supplies,Office Supplies,Credit Card,66.29
+01/22/2025,Credit Card Expense,T0224,Staples,Office/shop supplies,Office Supplies,Credit Card,325.06
+01/22/2025,Sales Receipt,T0339,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,805.99)"
+01/23/2025,Bill,T0152,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,427.26
+01/23/2025,Credit Card Expense,T0179,Costco,Office/shop supplies,Office Supplies,Credit Card,216.42
+01/23/2025,Sales Receipt,T0298,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(874.31)
+01/23/2025,Sales Receipt,T0355,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,193.95)"
+01/24/2025,Credit Card Expense,T0435,Amazon,Shop supplies,Office Supplies,Credit Card,94.27
+01/25/2025,Bill,T0100,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,893.47
+01/25/2025,Credit Card Expense,T0159,Staples,Office/shop supplies,Office Supplies,Credit Card,141.76
+01/26/2025,Bill,T0071,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,811.31
+01/26/2025,Credit Card Expense,T0189,Amazon,Office/shop supplies,Office Supplies,Credit Card,47.57
+01/26/2025,Expense,T0245,Square,Card processing fee,Merchant Account Fees,Checking,22.98
+01/26/2025,Sales Receipt,T0335,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,107.76)"
+01/26/2025,Credit Card Expense,T0461,Amazon,Shop supplies,Office Supplies,Credit Card,283.82
+01/27/2025,Sales Receipt,T0323,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,488.48)"
+01/28/2025,Bill,T0051,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,364.00"
+01/28/2025,Bill,T0092,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,545.54
+01/28/2025,Bill,T0128,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,691.72
+01/28/2025,Credit Card Expense,T0184,Costco,Office/shop supplies,Office Supplies,Credit Card,186.69
+01/28/2025,Expense,T0271,Square,Card processing fee,Merchant Account Fees,Checking,52.26
+01/28/2025,Sales Receipt,T0293,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,703.35)"
+01/29/2025,Bill,T0048,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,756.71
+01/29/2025,Bill,T0086,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,771.89
+01/29/2025,Bill,T0088,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,478.09
+01/29/2025,Credit Card Expense,T0196,Amazon,Office/shop supplies,Office Supplies,Credit Card,289.27
+01/29/2025,Credit Card Expense,T0467,Costco,Shop supplies,Office Supplies,Credit Card,264.51
+01/29/2025,Credit Card Expense,T0475,Costco,Shop supplies,Office Supplies,Credit Card,59.60
+01/30/2025,Credit Card Expense,T0158,Amazon,Office/shop supplies,Office Supplies,Credit Card,47.34
+01/30/2025,Credit Card Expense,T0473,Staples,Shop supplies,Office Supplies,Credit Card,47.76
+01/31/2025,Expense,T0006,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"11,820.02"
+01/31/2025,Bill,T0076,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,441.64"
+01/31/2025,Bill,T0091,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,135.88"
+01/31/2025,Bill,T0105,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,847.06
+01/31/2025,Bill,T0118,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,531.88
+01/31/2025,Credit Card Expense,T0188,Costco,Office/shop supplies,Office Supplies,Credit Card,136.23
+01/31/2025,Expense,T0278,Square,Card processing fee,Merchant Account Fees,Checking,87.51
+01/31/2025,Credit Card Expense,T0437,Staples,Shop supplies,Office Supplies,Credit Card,322.98
+Total Utilities,,,,,,,"3,200.00"
+01/31/2025,Check,T0489,John Bright,Owner draw - January,Owner's Draw,Checking,"6,000.00"
+01/31/2025,Journal Entry,T0492,,Monthly depreciation - equipment,Depreciation Expense,Accumulated Depreciation,"12,000.00"
+02/01/2025,Bill Payment,T0002,Prime Property Mgmt,Monthly studio rent,Rent Expense,Checking,"4,500.00"
+02/01/2025,Credit Card Expense,T0016,QuickBooks Online,Monthly subscription,Dues & Subscriptions,Credit Card,85.27
+02/01/2025,Credit Card Expense,T0017,Slack,Monthly subscription,Dues & Subscriptions,Credit Card,116.99
+02/01/2025,Credit Card Expense,T0018,Google Workspace,Monthly subscription,Dues & Subscriptions,Credit Card,73.50
+02/01/2025,Credit Card Expense,T0019,Adobe,Monthly subscription,Dues & Subscriptions,Credit Card,55.45
+02/01/2025,Credit Card Expense,T0020,Shopify,Monthly subscription,Dues & Subscriptions,Credit Card,102.20
+02/01/2025,Bill Payment,T0029,City Power & Light,Monthly utility,Utilities,Checking,297.12
+02/01/2025,Bill Payment,T0030,Metro Water,Monthly utility,Utilities,Checking,74.64
+02/01/2025,Bill Payment,T0031,Comcast Business,Monthly utility,Utilities,Checking,141.93
+02/01/2025,Bill,T0046,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,908.49
+02/01/2025,Bill,T0102,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,887.44
+02/01/2025,Bill,T0149,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,513.07
+02/01/2025,Bill,T0154,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,575.12
+02/01/2025,Credit Card Expense,T0190,Staples,Office/shop supplies,Office Supplies,Credit Card,229.49
+02/01/2025,Credit Card Expense,T0194,Amazon,Office/shop supplies,Office Supplies,Credit Card,243.38
+02/01/2025,Credit Card Expense,T0206,Costco,Office/shop supplies,Office Supplies,Credit Card,125.97
+02/01/2025,Expense,T0247,Square,Card processing fee,Merchant Account Fees,Checking,25.70
+02/01/2025,Expense,T0264,Square,Card processing fee,Merchant Account Fees,Checking,102.23
+02/01/2025,Sales Receipt,T0314,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(525.06)
+02/01/2025,Sales Receipt,T0390,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,167.89)"
+02/02/2025,Credit Card Expense,T0240,Staples,Office/shop supplies,Office Supplies,Credit Card,92.01
+02/02/2025,Credit Card Expense,T0439,Staples,Shop supplies,Office Supplies,Credit Card,119.15
+02/03/2025,Bill,T0054,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,671.29
+02/03/2025,Bill,T0068,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,238.16"
+02/03/2025,Bill,T0138,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,937.39
+02/03/2025,Credit Card Expense,T0164,Amazon,Office/shop supplies,Office Supplies,Credit Card,73.60
+02/03/2025,Credit Card Expense,T0229,Staples,Office/shop supplies,Office Supplies,Credit Card,141.48
+02/03/2025,Expense,T0272,Square,Card processing fee,Merchant Account Fees,Checking,50.74
+02/03/2025,Sales Receipt,T0324,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,554.81)"
+02/03/2025,Sales Receipt,T0333,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,796.87)"
+02/03/2025,Sales Receipt,T0421,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(943.27)
+02/04/2025,Bill,T0047,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,156.98"
+02/04/2025,Bill,T0065,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,774.19
+02/04/2025,Bill,T0136,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,065.31"
+02/04/2025,Expense,T0260,Square,Card processing fee,Merchant Account Fees,Checking,79.67
+02/04/2025,Sales Receipt,T0388,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,089.43)"
+02/04/2025,Credit Card Expense,T0463,Amazon,Shop supplies,Office Supplies,Credit Card,119.66
+02/05/2025,Bill,T0140,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,403.90
+02/05/2025,Credit Card Expense,T0208,Staples,Office/shop supplies,Office Supplies,Credit Card,64.02
+02/05/2025,Expense,T0274,Square,Card processing fee,Merchant Account Fees,Checking,73.36
+02/05/2025,Sales Receipt,T0294,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,676.71)"
+02/05/2025,Sales Receipt,T0357,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(644.83)
+02/05/2025,Sales Receipt,T0394,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,768.08)"
+02/06/2025,Credit Card Expense,T0209,Amazon,Office/shop supplies,Office Supplies,Credit Card,124.23
+02/06/2025,Sales Receipt,T0330,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,643.22)"
+02/06/2025,Sales Receipt,T0377,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,132.42)"
+02/06/2025,Credit Card Expense,T0428,Amazon,Shop supplies,Office Supplies,Credit Card,271.50
+02/06/2025,Credit Card Expense,T0452,Amazon,Shop supplies,Office Supplies,Credit Card,228.19
+02/06/2025,Bill,T0496,Precision Machine Works,Roaster drum rebuild,Repairs & Maintenance,Accounts Payable,"8,400.00"
+02/07/2025,Bill,T0040,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,340.85"
+02/07/2025,Bill,T0066,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,573.97
+02/07/2025,Sales Receipt,T0297,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(732.22)
+02/07/2025,Sales Receipt,T0329,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(362.02)
+02/07/2025,Sales Receipt,T0387,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,266.86)"
+02/08/2025,Bill,T0070,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,958.43
+02/08/2025,Credit Card Expense,T0181,Staples,Office/shop supplies,Office Supplies,Credit Card,105.16
+02/08/2025,Expense,T0248,Square,Card processing fee,Merchant Account Fees,Checking,104.28
+02/08/2025,Sales Receipt,T0313,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(461.84)
+02/08/2025,Sales Receipt,T0398,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,891.20)"
+02/08/2025,Credit Card Expense,T0431,Amazon,Shop supplies,Office Supplies,Credit Card,54.26
+02/08/2025,Credit Card Expense,T0443,Costco,Shop supplies,Office Supplies,Credit Card,338.23
+02/08/2025,Credit Card Expense,T0445,Amazon,Shop supplies,Office Supplies,Credit Card,349.81
+02/09/2025,Bill,T0083,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,494.66"
+02/09/2025,Expense,T0283,Square,Card processing fee,Merchant Account Fees,Checking,84.72
+02/09/2025,Sales Receipt,T0288,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(777.67)
+02/09/2025,Sales Receipt,T0320,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,380.40)"
+02/09/2025,Credit Card Expense,T0485,Best Buy,Espresso-bar laptop + POS tablet,Computer & Internet Expenses,Credit Card,"4,800.00"
+02/10/2025,Bill,T0050,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,694.51
+02/10/2025,Bill,T0052,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,120.98"
+02/10/2025,Bill,T0122,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,624.69
+02/10/2025,Bill,T0123,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,692.18
+02/10/2025,Credit Card Expense,T0166,Staples,Office/shop supplies,Office Supplies,Credit Card,227.92
+02/10/2025,Credit Card Expense,T0210,Costco,Office/shop supplies,Office Supplies,Credit Card,64.98
+02/10/2025,Sales Receipt,T0290,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(527.15)
+02/11/2025,Credit Card Expense,T0176,Staples,Office/shop supplies,Office Supplies,Credit Card,256.13
+02/11/2025,Expense,T0270,Square,Card processing fee,Merchant Account Fees,Checking,34.09
+02/11/2025,Sales Receipt,T0348,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,447.06)"
+02/11/2025,Sales Receipt,T0368,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(520.25)
+02/11/2025,Sales Receipt,T0404,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,952.24)"
+02/11/2025,Credit Card Expense,T0460,Costco,Shop supplies,Office Supplies,Credit Card,168.81
+02/12/2025,Bill,T0153,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,282.46"
+02/12/2025,Credit Card Expense,T0187,Amazon,Office/shop supplies,Office Supplies,Credit Card,293.71
+02/12/2025,Sales Receipt,T0361,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(910.01)
+02/12/2025,Sales Receipt,T0363,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,082.13)"
+02/12/2025,Credit Card Expense,T0494,ULINE,Bulk packaging one-time buy,Office Supplies,Credit Card,"2,200.00"
+02/13/2025,Bill,T0099,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,673.52
+02/13/2025,Bill,T0137,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,156.25"
+02/13/2025,Sales Receipt,T0306,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(650.29)
+02/13/2025,Credit Card Expense,T0465,Amazon,Shop supplies,Office Supplies,Credit Card,185.18
+02/14/2025,Expense,T0007,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"11,778.57"
+02/14/2025,Bill,T0129,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,367.20"
+02/14/2025,Expense,T0251,Square,Card processing fee,Merchant Account Fees,Checking,70.94
+02/14/2025,Sales Receipt,T0402,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(931.64)
+02/15/2025,Bill,T0043,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,137.19"
+02/15/2025,Credit Card Expense,T0218,Staples,Office/shop supplies,Office Supplies,Credit Card,273.58
+02/15/2025,Credit Card Expense,T0453,Amazon,Shop supplies,Office Supplies,Credit Card,237.35
+02/15/2025,Deposit,T0490,Bright Family Trust,Loan from shareholder to cover buildout,Shareholder Loan,Checking,"15,000.00"
+02/16/2025,Bill,T0038,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,611.52
+02/16/2025,Bill,T0075,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,663.40
+02/16/2025,Expense,T0256,Square,Card processing fee,Merchant Account Fees,Checking,81.74
+02/16/2025,Sales Receipt,T0373,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,483.00)"
+02/16/2025,Credit Card Expense,T0462,Costco,Shop supplies,Office Supplies,Credit Card,195.56
+02/17/2025,Bill,T0130,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,573.52
+02/17/2025,Expense,T0284,Square,Card processing fee,Merchant Account Fees,Checking,64.69
+02/17/2025,Credit Card Expense,T0481,Costco,Shop supplies,Office Supplies,Credit Card,334.31
+02/18/2025,Bill,T0036,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,007.24"
+02/18/2025,Credit Card Expense,T0231,Staples,Office/shop supplies,Office Supplies,Credit Card,273.12
+02/18/2025,Credit Card Expense,T0244,Staples,Office/shop supplies,Office Supplies,Credit Card,331.86
+02/18/2025,Sales Receipt,T0409,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,033.55)"
+02/18/2025,Credit Card Expense,T0425,Staples,Shop supplies,Office Supplies,Credit Card,234.31
+02/19/2025,Bill,T0108,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,419.17"
+02/19/2025,Sales Receipt,T0406,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(743.77)
+02/20/2025,Bill,T0053,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,904.74
+02/20/2025,Credit Card Expense,T0226,Costco,Office/shop supplies,Office Supplies,Credit Card,214.96
+02/20/2025,Credit Card Expense,T0468,Costco,Shop supplies,Office Supplies,Credit Card,153.39
+02/20/2025,Credit Card Expense,T0469,Amazon,Shop supplies,Office Supplies,Credit Card,121.98
+02/21/2025,Bill,T0057,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,641.25
+02/21/2025,Credit Card Expense,T0180,Costco,Office/shop supplies,Office Supplies,Credit Card,298.45
+02/21/2025,Expense,T0282,Square,Card processing fee,Merchant Account Fees,Checking,87.64
+02/21/2025,Sales Receipt,T0344,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,091.08)"
+02/21/2025,Sales Receipt,T0365,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,845.78)"
+02/21/2025,Sales Receipt,T0369,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,943.33)"
+02/21/2025,Bill,T0497,Apex Legal LLP,Trademark filing & counsel,Professional Fees,Accounts Payable,"6,500.00"
+02/22/2025,Expense,T0277,Square,Card processing fee,Merchant Account Fees,Checking,66.30
+02/22/2025,Sales Receipt,T0407,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(382.93)
+02/22/2025,Credit Card Expense,T0434,Costco,Shop supplies,Office Supplies,Credit Card,251.36
+02/22/2025,Credit Card Expense,T0477,Amazon,Shop supplies,Office Supplies,Credit Card,83.33
+02/23/2025,Credit Card Expense,T0213,Staples,Office/shop supplies,Office Supplies,Credit Card,142.57
+02/23/2025,Credit Card Expense,T0215,Staples,Office/shop supplies,Office Supplies,Credit Card,320.50
+02/23/2025,Credit Card Expense,T0219,Costco,Office/shop supplies,Office Supplies,Credit Card,271.73
+02/23/2025,Credit Card Expense,T0232,Staples,Office/shop supplies,Office Supplies,Credit Card,298.82
+02/23/2025,Sales Receipt,T0315,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,452.00)"
+02/23/2025,Sales Receipt,T0395,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(945.76)
+02/24/2025,Bill,T0096,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,913.73
+02/24/2025,Bill,T0101,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,706.40
+02/24/2025,Bill,T0143,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,410.64
+02/25/2025,Credit Card Expense,T0165,Staples,Office/shop supplies,Office Supplies,Credit Card,265.85
+02/25/2025,Credit Card Expense,T0169,Amazon,Office/shop supplies,Office Supplies,Credit Card,201.18
+02/25/2025,Expense,T0258,Square,Card processing fee,Merchant Account Fees,Checking,33.49
+02/25/2025,Credit Card Expense,T0429,Amazon,Shop supplies,Office Supplies,Credit Card,275.71
+02/25/2025,Credit Card Expense,T0433,Amazon,Shop supplies,Office Supplies,Credit Card,115.70
+02/25/2025,Check,T0488,Precision Roasting Equipment Rental,Equipment rental deposit,Equipment Rental,Checking,"7,000.00"
+02/26/2025,Credit Card Expense,T0202,Costco,Office/shop supplies,Office Supplies,Credit Card,292.65
+02/26/2025,Sales Receipt,T0318,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(864.97)
+02/26/2025,Sales Receipt,T0342,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(536.27)
+02/26/2025,Sales Receipt,T0346,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(452.84)
+02/26/2025,Sales Receipt,T0416,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(489.45)
+02/26/2025,Credit Card Expense,T0442,Staples,Shop supplies,Office Supplies,Credit Card,346.17
+02/26/2025,Credit Card Expense,T0458,Amazon,Shop supplies,Office Supplies,Credit Card,219.67
+02/27/2025,Expense,T0266,Square,Card processing fee,Merchant Account Fees,Checking,40.61
+02/27/2025,Expense,T0280,Square,Card processing fee,Merchant Account Fees,Checking,98.26
+02/27/2025,Sales Receipt,T0401,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,323.30)"
+02/28/2025,Expense,T0008,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"12,189.18"
+02/28/2025,Bill,T0035,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,537.31
+02/28/2025,Bill,T0109,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,865.31
+02/28/2025,Bill,T0125,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,421.92"
+02/28/2025,Credit Card Expense,T0157,Staples,Office/shop supplies,Office Supplies,Credit Card,134.61
+02/28/2025,Credit Card Expense,T0230,Staples,Office/shop supplies,Office Supplies,Credit Card,144.63
+02/28/2025,Expense,T0257,Square,Card processing fee,Merchant Account Fees,Checking,89.27
+02/28/2025,Sales Receipt,T0417,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(329.16)
+02/28/2025,Journal Entry,T0493,,Accrue unpaid February wages,Accrued Liabilities,Payroll Expenses,"3,500.00"
+03/01/2025,Bill Payment,T0003,Prime Property Mgmt,Monthly studio rent,Rent Expense,Checking,"4,500.00"
+03/01/2025,Credit Card Expense,T0021,QuickBooks Online,Monthly subscription,Dues & Subscriptions,Credit Card,90.89
+03/01/2025,Credit Card Expense,T0022,Slack,Monthly subscription,Dues & Subscriptions,Credit Card,123.09
+03/01/2025,Credit Card Expense,T0023,Google Workspace,Monthly subscription,Dues & Subscriptions,Credit Card,67.06
+03/01/2025,Credit Card Expense,T0024,Adobe,Monthly subscription,Dues & Subscriptions,Credit Card,58.06
+03/01/2025,Credit Card Expense,T0025,Shopify,Monthly subscription,Dues & Subscriptions,Credit Card,106.98
+03/01/2025,Bill Payment,T0032,City Power & Light,Monthly utility,Utilities,Checking,368.65
+03/01/2025,Bill Payment,T0033,Metro Water,Monthly utility,Utilities,Checking,100.19
+03/01/2025,Bill Payment,T0034,Comcast Business,Monthly utility,Utilities,Checking,156.14
+03/01/2025,Bill,T0062,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,676.56
+03/01/2025,Credit Card Expense,T0183,Staples,Office/shop supplies,Office Supplies,Credit Card,177.07
+03/01/2025,Credit Card Expense,T0200,Costco,Office/shop supplies,Office Supplies,Credit Card,204.65
+03/01/2025,Credit Card Expense,T0214,Staples,Office/shop supplies,Office Supplies,Credit Card,59.30
+03/01/2025,Expense,T0262,Square,Card processing fee,Merchant Account Fees,Checking,60.74
+03/01/2025,Expense,T0267,Square,Card processing fee,Merchant Account Fees,Checking,74.83
+03/01/2025,Credit Card Expense,T0476,Costco,Shop supplies,Office Supplies,Credit Card,133.68
+03/02/2025,Bill,T0094,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,609.45
+03/02/2025,Credit Card Expense,T0205,Staples,Office/shop supplies,Office Supplies,Credit Card,120.35
+03/02/2025,Credit Card Expense,T0233,Amazon,Office/shop supplies,Office Supplies,Credit Card,272.20
+03/02/2025,Sales Receipt,T0305,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,209.56)"
+03/02/2025,Sales Receipt,T0360,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(961.13)
+03/02/2025,Sales Receipt,T0408,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,639.93)"
+03/03/2025,Bill,T0106,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,351.12"
+03/03/2025,Sales Receipt,T0308,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(516.77)
+03/03/2025,Sales Receipt,T0389,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,162.46)"
+03/03/2025,Credit Card Expense,T0446,Amazon,Shop supplies,Office Supplies,Credit Card,113.53
+03/03/2025,Credit Card Expense,T0464,Staples,Shop supplies,Office Supplies,Credit Card,271.43
+03/03/2025,Credit Card Expense,T0486,Home Depot,Cafe build-out shelving & fixtures,Repairs & Maintenance,Credit Card,"2,900.00"
+03/04/2025,Bill,T0074,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,523.05
+03/04/2025,Credit Card Expense,T0221,Amazon,Office/shop supplies,Office Supplies,Credit Card,124.61
+03/04/2025,Credit Card Expense,T0222,Amazon,Office/shop supplies,Office Supplies,Credit Card,160.55
+03/04/2025,Expense,T0255,Square,Card processing fee,Merchant Account Fees,Checking,26.08
+03/04/2025,Sales Receipt,T0303,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(494.92)
+03/04/2025,Sales Receipt,T0359,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,141.20)"
+03/04/2025,Sales Receipt,T0400,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,944.00)"
+03/04/2025,Credit Card Expense,T0426,Costco,Shop supplies,Office Supplies,Credit Card,51.13
+03/05/2025,Sales Receipt,T0364,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(847.61)
+03/05/2025,Sales Receipt,T0374,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,488.28)"
+03/05/2025,Sales Receipt,T0412,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,133.17)"
+03/06/2025,Bill,T0069,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,357.57"
+03/06/2025,Credit Card Expense,T0175,Staples,Office/shop supplies,Office Supplies,Credit Card,246.74
+03/06/2025,Credit Card Expense,T0203,Staples,Office/shop supplies,Office Supplies,Credit Card,297.48
+03/06/2025,Expense,T0253,Square,Card processing fee,Merchant Account Fees,Checking,82.99
+03/06/2025,Sales Receipt,T0345,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,325.96)"
+03/06/2025,Sales Receipt,T0396,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(807.63)
+03/07/2025,Bill,T0116,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,336.48"
+03/07/2025,Credit Card Expense,T0161,Staples,Office/shop supplies,Office Supplies,Credit Card,250.65
+03/07/2025,Credit Card Expense,T0167,Amazon,Office/shop supplies,Office Supplies,Credit Card,159.41
+03/07/2025,Credit Card Expense,T0186,Costco,Office/shop supplies,Office Supplies,Credit Card,236.21
+03/08/2025,Bill,T0085,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,533.10
+03/08/2025,Credit Card Expense,T0207,Staples,Office/shop supplies,Office Supplies,Credit Card,234.29
+03/08/2025,Expense,T0259,Square,Card processing fee,Merchant Account Fees,Checking,116.37
+03/08/2025,Expense,T0275,Square,Card processing fee,Merchant Account Fees,Checking,114.55
+03/08/2025,Sales Receipt,T0317,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,022.72)"
+03/09/2025,Bill,T0073,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,058.84"
+03/09/2025,Bill,T0115,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,462.57
+03/09/2025,Sales Receipt,T0285,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(953.14)
+03/09/2025,Sales Receipt,T0295,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,433.90)"
+03/10/2025,Credit Card Expense,T0162,Staples,Office/shop supplies,Office Supplies,Credit Card,331.16
+03/10/2025,Credit Card Expense,T0170,Costco,Office/shop supplies,Office Supplies,Credit Card,263.02
+03/10/2025,Expense,T0261,Square,Card processing fee,Merchant Account Fees,Checking,96.34
+03/10/2025,Sales Receipt,T0291,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,106.67)"
+03/10/2025,Sales Receipt,T0299,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(540.51)
+03/10/2025,Credit Card Expense,T0480,Amazon,Shop supplies,Office Supplies,Credit Card,160.48
+03/11/2025,Bill,T0082,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,158.85"
+03/11/2025,Bill,T0104,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,465.90"
+03/11/2025,Bill,T0131,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,732.77
+03/11/2025,Bill,T0145,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,318.05"
+03/11/2025,Credit Card Expense,T0220,Costco,Office/shop supplies,Office Supplies,Credit Card,318.32
+03/11/2025,Sales Receipt,T0336,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(727.14)
+03/11/2025,Sales Receipt,T0371,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,177.76)"
+03/11/2025,Sales Receipt,T0403,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,016.70)"
+03/11/2025,Bill,T0498,Harbor Contract Labor,Seasonal barista staffing,Contract Labor,Accounts Payable,"9,200.00"
+03/12/2025,Bill,T0063,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,148.31"
+03/12/2025,Bill,T0080,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,691.56
+03/12/2025,Bill,T0103,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,455.65
+03/12/2025,Bill,T0133,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,424.93"
+03/12/2025,Credit Card Expense,T0177,Amazon,Office/shop supplies,Office Supplies,Credit Card,99.47
+03/12/2025,Credit Card Expense,T0204,Staples,Office/shop supplies,Office Supplies,Credit Card,318.13
+03/12/2025,Sales Receipt,T0286,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(928.50)
+03/12/2025,Sales Receipt,T0301,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(855.06)
+03/12/2025,Sales Receipt,T0326,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(442.62)
+03/12/2025,Sales Receipt,T0366,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(369.72)
+03/12/2025,Sales Receipt,T0376,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(548.93)
+03/13/2025,Bill,T0055,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,689.02
+03/13/2025,Bill,T0110,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,190.25"
+03/13/2025,Bill,T0150,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,471.22"
+03/13/2025,Credit Card Expense,T0198,Amazon,Office/shop supplies,Office Supplies,Credit Card,324.42
+03/13/2025,Credit Card Expense,T0201,Costco,Office/shop supplies,Office Supplies,Credit Card,138.36
+03/13/2025,Credit Card Expense,T0474,Staples,Shop supplies,Office Supplies,Credit Card,323.73
+03/14/2025,Expense,T0009,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"12,141.36"
+03/14/2025,Bill,T0119,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,036.81"
+03/14/2025,Bill,T0127,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,480.59
+03/14/2025,Credit Card Expense,T0239,Amazon,Office/shop supplies,Office Supplies,Credit Card,184.16
+03/14/2025,Expense,T0250,Square,Card processing fee,Merchant Account Fees,Checking,97.18
+03/14/2025,Sales Receipt,T0341,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,050.27)"
+03/14/2025,Credit Card Expense,T0450,Costco,Shop supplies,Office Supplies,Credit Card,281.28
+03/15/2025,Bill,T0093,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,919.94
+03/15/2025,Credit Card Expense,T0168,Amazon,Office/shop supplies,Office Supplies,Credit Card,118.96
+03/15/2025,Credit Card Expense,T0217,Staples,Office/shop supplies,Office Supplies,Credit Card,187.86
+03/15/2025,Sales Receipt,T0351,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,415.53)"
+03/15/2025,Sales Receipt,T0354,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(376.44)
+03/15/2025,Credit Card Expense,T0447,Staples,Shop supplies,Office Supplies,Credit Card,218.19
+03/16/2025,Bill,T0056,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,387.61"
+03/16/2025,Bill,T0146,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,562.90
+03/16/2025,Credit Card Expense,T0182,Costco,Office/shop supplies,Office Supplies,Credit Card,242.96
+03/16/2025,Credit Card Expense,T0216,Costco,Office/shop supplies,Office Supplies,Credit Card,46.05
+03/16/2025,Sales Receipt,T0358,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,128.18)"
+03/16/2025,Sales Receipt,T0399,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,197.91)"
+03/17/2025,Bill,T0087,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,653.13
+03/17/2025,Expense,T0263,Square,Card processing fee,Merchant Account Fees,Checking,43.18
+03/17/2025,Sales Receipt,T0319,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,181.06)"
+03/17/2025,Sales Receipt,T0414,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(930.79)
+03/18/2025,Expense,T0249,Square,Card processing fee,Merchant Account Fees,Checking,99.58
+03/18/2025,Expense,T0273,Square,Card processing fee,Merchant Account Fees,Checking,88.62
+03/18/2025,Sales Receipt,T0340,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,723.02)"
+03/18/2025,Sales Receipt,T0392,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,265.66)"
+03/18/2025,Bill Payment,T0495,City Power & Light,HVAC surge / equipment repair charge,Utilities,Checking,"1,800.00"
+03/19/2025,Bill,T0045,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,588.25
+03/19/2025,Bill,T0081,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,460.80"
+03/19/2025,Credit Card Expense,T0241,Costco,Office/shop supplies,Office Supplies,Credit Card,262.69
+03/19/2025,Sales Receipt,T0380,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,818.70)"
+03/20/2025,Credit Card Expense,T0436,Staples,Shop supplies,Office Supplies,Credit Card,232.11
+03/21/2025,Credit Card Expense,T0173,Staples,Office/shop supplies,Office Supplies,Credit Card,245.65
+03/21/2025,Credit Card Expense,T0225,Costco,Office/shop supplies,Office Supplies,Credit Card,48.36
+03/21/2025,Sales Receipt,T0316,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(728.81)
+03/21/2025,Credit Card Expense,T0454,Staples,Shop supplies,Office Supplies,Credit Card,250.11
+03/22/2025,Bill,T0037,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,374.00"
+03/22/2025,Bill,T0089,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,651.84
+03/22/2025,Credit Card Expense,T0192,Costco,Office/shop supplies,Office Supplies,Credit Card,100.27
+03/22/2025,Sales Receipt,T0334,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,420.60)"
+03/22/2025,Credit Card Expense,T0456,Amazon,Shop supplies,Office Supplies,Credit Card,320.06
+03/22/2025,Credit Card Expense,T0500,Amazon,Case of receipt paper + cups (bulk),Office Supplies,Credit Card,"2,650.00"
+03/23/2025,Bill,T0042,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,578.92
+03/23/2025,Credit Card Expense,T0472,Staples,Shop supplies,Office Supplies,Credit Card,73.59
+03/24/2025,Bill,T0098,Andes Green Coffee,Green coffee purchase,Cost of Goods Sold,Accounts Payable,466.67
+03/24/2025,Expense,T0279,Square,Card processing fee,Merchant Account Fees,Checking,89.74
+03/24/2025,Credit Card Expense,T0457,Amazon,Shop supplies,Office Supplies,Credit Card,135.77
+03/25/2025,Bill,T0084,Highland Bean Co,Green coffee purchase,Cost of Goods Sold,Accounts Payable,881.91
+03/25/2025,Bill,T0132,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,408.61
+03/25/2025,Sales Receipt,T0356,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,140.24)"
+03/25/2025,Sales Receipt,T0411,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,163.55)"
+03/25/2025,Sales Receipt,T0419,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(2,142.92)"
+03/26/2025,Bill,T0121,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,021.75"
+03/26/2025,Expense,T0252,Square,Card processing fee,Merchant Account Fees,Checking,53.91
+03/26/2025,Sales Receipt,T0410,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,805.55)"
+03/26/2025,Credit Card Expense,T0449,Staples,Shop supplies,Office Supplies,Credit Card,125.09
+03/26/2025,Credit Card Expense,T0455,Costco,Shop supplies,Office Supplies,Credit Card,299.88
+03/27/2025,Credit Card Expense,T0171,Amazon,Office/shop supplies,Office Supplies,Credit Card,152.91
+03/27/2025,Credit Card Expense,T0178,Staples,Office/shop supplies,Office Supplies,Credit Card,249.97
+03/27/2025,Credit Card Expense,T0223,Costco,Office/shop supplies,Office Supplies,Credit Card,287.42
+03/27/2025,Expense,T0268,Square,Card processing fee,Merchant Account Fees,Checking,54.79
+03/28/2025,Expense,T0010,Gusto Payroll,Payroll run,Payroll Expenses,Checking,"12,313.74"
+03/28/2025,Sales Receipt,T0350,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,888.32)"
+03/28/2025,Sales Receipt,T0353,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,860.70)"
+03/28/2025,Sales Receipt,T0424,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,932.75)"
+03/28/2025,Credit Card Expense,T0441,Costco,Shop supplies,Office Supplies,Credit Card,88.97
+03/28/2025,Credit Card Expense,T0471,Staples,Shop supplies,Office Supplies,Credit Card,221.21
+03/28/2025,Check,T0491,John Bright,Q1 distribution to member,Distributions,Checking,"5,500.00"
+03/29/2025,Sales Receipt,T0311,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(401.86)
+03/30/2025,Expense,T0246,Square,Card processing fee,Merchant Account Fees,Checking,102.21
+03/30/2025,Sales Receipt,T0292,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(651.78)
+03/30/2025,Sales Receipt,T0328,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,428.24)"
+03/30/2025,Sales Receipt,T0343,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(877.77)
+03/30/2025,Sales Receipt,T0422,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,055.22)"
+03/30/2025,Credit Card Expense,T0444,Staples,Shop supplies,Office Supplies,Credit Card,181.62
+03/31/2025,Bill,T0044,Roaster's Supply,Green coffee purchase,Cost of Goods Sold,Accounts Payable,"1,112.84"
+03/31/2025,Credit Card Expense,T0155,Amazon,Office/shop supplies,Office Supplies,Credit Card,158.59
+03/31/2025,Credit Card Expense,T0193,Staples,Office/shop supplies,Office Supplies,Credit Card,193.26
+03/31/2025,Credit Card Expense,T0197,Costco,Office/shop supplies,Office Supplies,Credit Card,184.01
+03/31/2025,Sales Receipt,T0287,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,162.12)"
+03/31/2025,Sales Receipt,T0331,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,933.25)"
+03/31/2025,Sales Receipt,T0378,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,"(1,220.95)"
+03/31/2025,Sales Receipt,T0405,Cafe Sales,Daily retail sales,Sales,Undeposited Funds,(753.73)
+03/31/2025,Credit Card Expense,T0448,Staples,Shop supplies,Office Supplies,Credit Card,46.80
+03/31/2025,Credit Card Expense,T0482,Costco,Shop supplies,Office Supplies,Credit Card,169.93

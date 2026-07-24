@@ -1,0 +1,16 @@
+question_id,question,category,transaction_ref,conclusion
+Q01,Are the large Amazon purchases capitalizable equipment?,capex_vs_opex,T0484,Monitors likely meet the capitalization threshold; verify.
+Q02,Is the Best Buy laptop/POS capitalizable?,capex_vs_opex,T0485,Computer hardware — likely capitalize.
+Q03,Is the Home Depot build-out capitalizable?,capex_vs_opex,T0486,Leasehold improvement — likely capitalize.
+Q04,"Why the round $10,000 owner capital contribution?",owner_personal,T0487,Confirm equity funding is documented.
+Q05,Owner draws / distributions to John Bright this quarter?,owner_personal,T0489,Both are owner distributions; confirm classification.
+Q05,Owner draws / distributions to John Bright this quarter?,owner_personal,T0491,Both are owner distributions; confirm classification.
+Q06,Shareholder loan from Bright Family Trust?,related_party,T0490,Related-party loan; confirm terms.
+Q07,Depreciation journal entry at period end?,journal_entry_review,T0492,Confirm depreciation support.
+Q08,Wage-accrual journal entry at period end?,journal_entry_review,T0493,Confirm accrual basis.
+Q09,Why is Office Supplies elevated — the big one-off buys?,account_anomaly,T0484,Several unusually large Office Supplies entries; review.
+Q09,Why is Office Supplies elevated — the big one-off buys?,account_anomaly,T0494,Several unusually large Office Supplies entries; review.
+Q10,Why did Utilities spike in March?,account_anomaly,T0495,One-off HVAC/repair charge in Utilities; borderline.
+Q11,"New vendor Precision Machine Works, $8,400 to R&M?",new_vendor,T0496,First-time vendor; verify capitalization.
+Q12,"New vendor Apex Legal, $6,500 legal fees?",new_vendor,T0497,First-time professional-fee vendor.
+Q13,"New vendor Harbor Contract Labor, $9,200?",new_vendor,T0498,First-time contract-labor vendor.
