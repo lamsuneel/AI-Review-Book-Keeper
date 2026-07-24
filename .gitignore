@@ -14,6 +14,10 @@ __pycache__/
 surprises.jsonl
 runs/
 
+# Real/client data — never commit (even anonymized). Adapters live in
+# src/importers/ (tracked code); only the data under data/real/ is ignored.
+data/real/
+
 # Pipeline output (generated, not source)
 review_queue.md
 review_queue.csv
