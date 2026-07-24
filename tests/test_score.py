@@ -19,16 +19,18 @@ def test_jaccard():
 def _build_fixture(tmp_path):
     rng = random.Random(generate.SEED)
     boring = generate.generate_boring(rng)
-    seeded, concerns = generate.generate_seeded(len(boring))
+    seeded, concerns, fixtures = generate.generate_seeded(len(boring))
     ledger_path = tmp_path / "ledger.csv"
     ann_path = tmp_path / "ground_truth.csv"
+    manifest_path = tmp_path / "fixture_manifest.csv"
     generate.serialize_ledger(boring + seeded, str(ledger_path))
     generate.serialize_concerns(concerns, str(ann_path))
-    return str(ledger_path), str(ann_path)
+    generate.serialize_manifest(fixtures, str(manifest_path))
+    return str(ledger_path), str(ann_path), str(manifest_path)
 
 
 def test_fixture_end_to_end(tmp_path):
-    ledger_path, ann_path = _build_fixture(tmp_path)
+    ledger_path, ann_path, manifest_path = _build_fixture(tmp_path)
     ledger = load_ledger(ledger_path)
     issues = discover_issues(ledger, compute_profile(ledger))
     questions = load_annotations(ann_path)
@@ -46,8 +48,26 @@ def test_fixture_end_to_end(tmp_path):
     assert cov.fraction == 1.0  # baseline assesses everything
 
 
+def test_fixture_manifest_all_behave_as_designed(tmp_path):
+    from src.score import check_fixtures, load_fixture_manifest
+
+    ledger_path, ann_path, manifest_path = _build_fixture(tmp_path)
+    ledger = load_ledger(ledger_path)
+    issues = discover_issues(ledger, compute_profile(ledger))
+    questions = load_annotations(ann_path)
+    result = score(issues, questions)
+
+    manifest = load_fixture_manifest(manifest_path)
+    checks = check_fixtures(manifest, issues, result.false_positives)
+    assert len(checks) == 3
+    # Every seeded imperfection must still behave as its id says — a DRIFT here
+    # means the harness (or a detector threshold) changed under us.
+    for fx, ok, observed in checks:
+        assert ok, f"{fx['fixture_id']} drifted: {observed}"
+
+
 def test_fixture_report_is_stamped(tmp_path):
-    ledger_path, ann_path = _build_fixture(tmp_path)
+    ledger_path, ann_path, manifest_path = _build_fixture(tmp_path)
     ledger = load_ledger(ledger_path)
     issues = discover_issues(ledger, compute_profile(ledger))
     questions = load_annotations(ann_path)

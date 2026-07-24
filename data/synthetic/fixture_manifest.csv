@@ -1,0 +1,4 @@
+fixture_id,kind,transaction_ref,description
+FIXTURE-001,expected_miss,T0495,Utilities March variance: borderline outlier (~2.9 SD) the baseline misses.
+FIXTURE-002,expected_extra,T0499,"IRS round $5,000 estimated tax: benign, surfaces as an extra."
+FIXTURE-003,expected_extra,T0488,"Equipment-rental round $7,000: benign new-vendor extra."

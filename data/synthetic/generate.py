@@ -237,11 +237,11 @@ def generate_seeded(start_index: int) -> tuple[list[dict], list[dict]]:
     # --- Two DELIBERATE borderline transactions, intentionally NOT given a
     # concern, so the baseline surfaces issues that match no reviewer question
     # (false positives) and the harness proves it can see them. --------------
-    add(date(2025, 1, 16), "Check", "IRS", "Estimated federal tax payment",
-        "Income Tax Expense", "Checking", 5_000.00)  # benign round tax payment -> FP
+    irs = add(date(2025, 1, 16), "Check", "IRS", "Estimated federal tax payment",
+              "Income Tax Expense", "Checking", 5_000.00)  # benign round tax -> extra
     add(date(2025, 3, 22), "Credit Card Expense", "Amazon",
         "Case of receipt paper + cups (bulk)", "Office Supplies", "Credit Card",
-        2_650.00)  # benign bulk consumables; absorbed into the Amazon/Office issues
+        2_650.00)  # benign bulk consumables; ABSORBED into the Amazon/Office issues
 
     # --- Concerns (synthetic reviewer questions). Note the deliberate
     # imperfections: `account-utilities` is a borderline outlier the baseline
@@ -279,7 +279,21 @@ def generate_seeded(start_index: int) -> tuple[list[dict], list[dict]]:
         _concern("Q13", "New vendor Harbor Contract Labor, $9,200?",
                  "new_vendor", [harbor_labor], "First-time contract-labor vendor."),
     ]
-    return ledger, concerns
+
+    # Stable identifiers for the seeded imperfections that actually manifest in
+    # scoring, so score.py can name them and flag drift. (The Amazon bulk-paper
+    # consumable is deliberately ABSORBED — matched via the Amazon capex and
+    # Office-Supplies anomaly issues at Jaccard >= 0.5 — so it is not an extra
+    # and has no fixture id.)
+    fixtures = [
+        {"fixture_id": "FIXTURE-001", "kind": "expected_miss", "transaction_ref": city_power_spike,
+         "description": "Utilities March variance: borderline outlier (~2.9 SD) the baseline misses."},
+        {"fixture_id": "FIXTURE-002", "kind": "expected_extra", "transaction_ref": irs,
+         "description": "IRS round $5,000 estimated tax: benign, surfaces as an extra."},
+        {"fixture_id": "FIXTURE-003", "kind": "expected_extra", "transaction_ref": equip_rental,
+         "description": "Equipment-rental round $7,000: benign new-vendor extra."},
+    ]
+    return ledger, concerns, fixtures
 
 
 def _concern(qid: str, question: str, category: str, refs: list[str],
@@ -342,21 +356,32 @@ def serialize_concerns(concerns: list[dict], path: str) -> None:
                 })
 
 
+def serialize_manifest(fixtures: list[dict], path: str) -> None:
+    fields = ["fixture_id", "kind", "transaction_ref", "description"]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(fixtures)
+
+
 def main() -> None:
     rng = random.Random(SEED)
     boring = generate_boring(rng)
-    seeded, concerns = generate_seeded(len(boring))
+    seeded, concerns, fixtures = generate_seeded(len(boring))
     all_rows = boring + seeded
 
     ledger_path = os.path.join(OUT_DIR, "ledger.csv")
     truth_path = os.path.join(OUT_DIR, "ground_truth.csv")
+    manifest_path = os.path.join(OUT_DIR, "fixture_manifest.csv")
     serialize_ledger(all_rows, ledger_path)
     serialize_concerns(concerns, truth_path)
+    serialize_manifest(fixtures, manifest_path)
 
     refs = sum(len(c["refs"]) for c in concerns)
     print(f"Wrote {len(all_rows)} transactions to {ledger_path}")
     print(f"Wrote {len(concerns)} reviewer questions ({refs} transaction refs) "
           f"to {truth_path}")
+    print(f"Wrote {len(fixtures)} fixture markers to {manifest_path}")
 
 
 if __name__ == "__main__":

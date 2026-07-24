@@ -1,6 +1,6 @@
-# DOMAIN.md — Domain Model (v1)
+# DOMAIN.md — Domain Model (v2)
 
-**Status:** v1 · prose-first. This document is the source of truth. Code
+**Status:** v2 · prose-first. This document is the source of truth. Code
 mirrors this model, not the other way around. When the model and the code
 disagree, the code is wrong until this document is changed. Changing this
 document is allowed and expected — but every change records, in the Changelog,
@@ -49,6 +49,12 @@ worth a reviewer's attention. Fields:
 - `reviewer_verdict` — `null` until a reviewer annotates it; then
   `correct | incorrect | partial`. **This is the only confidence signal we
   trust.** There are no model-self-reported confidence scores anywhere.
+- `surprise_class` — `null` unless a reviewer classifies a *surprise* issue
+  (one no baseline or ground-truth concern anticipated) as
+  `valuable_surprise | valid_alternative_reasoning | noise`. **Only a reviewer
+  may fill it.** Discovery and fixtures log surprises; they never classify
+  them. Like `reviewer_verdict`, it is trust earned from a human, not asserted
+  by the system.
 
 An issue may cite **exactly one** transaction. Singleton anomalies (e.g. a
 single large journal entry on the last day of the month) are first-class
@@ -111,6 +117,13 @@ participates in matching.
 - **Discovery owns meaning; rendering owns form.** Content (reasons,
   evidence, category, investigation) is fixed at discovery. `report.py` only
   presents it.
+- **Signals never disappear (demotion, not deletion).** A discovery strategy
+  may decide a signal doesn't deserve its *own* issue — but it may never drop
+  the signal silently. A demoted signal loses issue ownership, not provenance:
+  it survives as a `reason` on the issue that owns the transaction. (Learned
+  from the baseline's `new_vendor`-vs-`owner_draw` duplicate-issue noise: an
+  owner draw is not a new vendor, so `new_vendor` loses its own issue — but the
+  "first transaction from this vendor" fact still appears as a reason.)
 - **Deterministic logic compiles context; it never gatekeeps.** The profile
   computes signals over *every* transaction and filters nothing out before
   assessment. (See `FOUNDER.md`, AI-usage rule.)
@@ -134,6 +147,14 @@ never the words "hypothesis" or "confidence".
 
 ## Changelog
 
+- **v2** — Added the *demotion, not deletion* invariant (signals keep
+  provenance as reasons even when they lose issue ownership) and the
+  reviewer-only `surprise_class` taxonomy field. Learned: (1) the deterministic
+  baseline was *deleting* a suppressed `new_vendor` signal rather than demoting
+  it, which loses a fact a reviewer might want — provenance must survive
+  suppression; (2) once an LLM strategy can surface issues neither the baseline
+  nor ground truth anticipated ("surprises"), we need a place to record a
+  reviewer's judgment of them — but only a reviewer's, never the system's.
 - **v1** — Initial domain model. Establishes the issue-level contract
   (patterns + traceable evidence as the unit of output, replacing
   flagged-transaction output), the recomputability and provenance invariants,

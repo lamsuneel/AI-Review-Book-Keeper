@@ -60,6 +60,41 @@ def jaccard(a: set[str], b: set[str]) -> float:
     return len(a & b) / len(a | b)
 
 
+def load_fixture_manifest(path: str) -> list[dict]:
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        return list(csv.DictReader(fh))
+
+
+def check_fixtures(manifest: list[dict], issues: list["ReviewIssue"],
+                   false_positives: list["ReviewIssue"]) -> list[tuple[dict, bool, str]]:
+    """Verify each seeded imperfection still behaves as its manifest says.
+
+    expected_miss: the ref must be covered by NO produced issue.
+    expected_extra: the ref must sit in an issue that matched no concern.
+    Returns (fixture, ok, observed) tuples so the report can flag drift by ID."""
+    attached = set()
+    for i in issues:
+        attached |= i.evidence_refs
+    fp_refs = set()
+    for i in false_positives:
+        fp_refs |= i.evidence_refs
+
+    results = []
+    for fx in manifest:
+        ref = fx["transaction_ref"]
+        kind = fx["kind"]
+        if kind == "expected_miss":
+            ok = ref not in attached
+            observed = "still missed" if ok else "now surfaced by an issue"
+        elif kind == "expected_extra":
+            ok = ref in fp_refs
+            observed = "still an extra" if ok else "no longer an unmatched extra"
+        else:
+            ok, observed = False, f"unknown kind '{kind}'"
+        results.append((fx, ok, observed))
+    return results
+
+
 @dataclass
 class ScoreResult:
     matched: list[tuple[Question, ReviewIssue, float]]
@@ -102,7 +137,8 @@ def score(issues: list[ReviewIssue], questions: list[Question],
     return ScoreResult(matched, missed, false_positives, threshold)
 
 
-def format_report(result: ScoreResult, dataset_kind: str, n_issues: int) -> str:
+def format_report(result: ScoreResult, dataset_kind: str, n_issues: int,
+                  fixture_checks: list[tuple[dict, bool, str]] | None = None) -> str:
     lines = []
     banner = "=" * 70
     lines.append(banner)
@@ -141,6 +177,17 @@ def format_report(result: ScoreResult, dataset_kind: str, n_issues: int) -> str:
         lines.append("EXTRA — our issues matching no reviewer question (false positives):")
         for issue in result.false_positives:
             lines.append(f"  {issue.title}  refs={sorted(issue.evidence_refs)}")
+
+    if fixture_checks:
+        lines.append("")
+        lines.append("FIXTURE INTEGRITY (seeded imperfections, by id):")
+        for fx, ok, observed in fixture_checks:
+            tag = "OK  " if ok else "DRIFT"
+            lines.append(f"  [{tag}] {fx['fixture_id']} ({fx['kind']}, {fx['transaction_ref']}): "
+                         f"{observed}")
+            if not ok:
+                lines.append(f"         ^ EXPECTED: {fx['description']} — this fixture no "
+                             f"longer behaves as designed; investigate before trusting the run.")
     lines.append("")
     return "\n".join(lines)
 
@@ -153,6 +200,9 @@ def main(argv: list[str] | None = None) -> int:
                         help="REQUIRED. Stamped into the report; 'fixture' measures "
                              "the harness, 'validation' measures the product.")
     parser.add_argument("--threshold", type=float, default=0.5)
+    parser.add_argument("--fixture-manifest", default=None,
+                        help="Optional fixture-manifest CSV. For --dataset-kind fixture it "
+                             "defaults to fixture_manifest.csv beside the annotations.")
     args = parser.parse_args(argv)
 
     if hasattr(sys.stdout, "reconfigure"):
@@ -170,7 +220,20 @@ def main(argv: list[str] | None = None) -> int:
     questions = load_annotations(args.annotations)
 
     result = score(issues, questions, args.threshold)
-    print(format_report(result, args.dataset_kind, len(issues)))
+
+    # Fixture integrity: check seeded imperfections by id (fixtures only).
+    fixture_checks = None
+    manifest_path = args.fixture_manifest
+    if args.dataset_kind == "fixture" and manifest_path is None:
+        default = os.path.join(os.path.dirname(os.path.abspath(args.annotations)),
+                               "fixture_manifest.csv")
+        if os.path.isfile(default):
+            manifest_path = default
+    if manifest_path and os.path.isfile(manifest_path):
+        manifest = load_fixture_manifest(manifest_path)
+        fixture_checks = check_fixtures(manifest, issues, result.false_positives)
+
+    print(format_report(result, args.dataset_kind, len(issues), fixture_checks))
     print(f"Coverage: {coverage.fraction:.0%} assessed "
           f"({coverage.attached} attached, {coverage.cleared} cleared).")
     return 0

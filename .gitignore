@@ -7,6 +7,12 @@ __pycache__/
 # Virtual environment / uv
 .venv/
 
+# Secrets — the API key is read from the environment, never committed
+.env
+
+# LLM run artifacts (generated)
+surprises.jsonl
+
 # Pipeline output (generated, not source)
 review_queue.md
 review_queue.csv

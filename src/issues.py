@@ -107,6 +107,8 @@ class ReviewIssue:
     suggested_investigation: str
     presentation_order: int = 0
     reviewer_verdict: str | None = None  # correct | incorrect | partial; null until annotated
+    # valuable_surprise | valid_alternative_reasoning | noise; ONLY a reviewer fills this.
+    surprise_class: str | None = None
     rank_components: dict = field(default_factory=dict)  # what drove presentation_order
 
     @property
@@ -372,6 +374,10 @@ def discover_issues(
     # several buckets (evidence may overlap across issues) — that's allowed.
     buckets: dict[tuple[str, str], list[Transaction]] = {}
     round_only: list[Transaction] = []
+    # Transactions whose new_vendor signal was demoted (not deleted): the fact
+    # survives as a reason on the owning issue. See DOMAIN.md "demotion, not
+    # deletion". Maps ref -> Transaction.
+    demoted_new_vendor: dict[str, Transaction] = {}
 
     for t in txns:
         sig = profile.signals_for(t)
@@ -379,13 +385,14 @@ def discover_issues(
         # Miserly refinement (Risk 2): "new vendor" is a weak, name-based signal.
         # Once a transaction is recognized as an owner/related-party/capitalization
         # matter, a redundant "unknown new vendor" issue only adds noise (an owner
-        # draw is not a new vendor). Suppress new_vendor there — the transaction is
-        # still assessed and surfaced under its stronger category. Genuinely new
-        # unknown vendors keep the signal.
+        # draw is not a new vendor). DEMOTE new_vendor there — the signal loses its
+        # own issue but survives as a reason on the owning issue (provenance
+        # invariant). Genuinely new unknown vendors keep their own issue.
         if SIGNAL_NEW_VENDOR in forming and any(
             s in forming for s in (SIGNAL_CAPEX, SIGNAL_OWNER_PERSONAL, SIGNAL_RELATED_PARTY)
         ):
             forming.remove(SIGNAL_NEW_VENDOR)
+            demoted_new_vendor[t.ref] = t
         if forming:
             for s in forming:
                 category = _ISSUE_FORMING[s]
@@ -431,6 +438,20 @@ def discover_issues(
                 suggested_investigation=investigation,
             )
         )
+
+    # Demotion, not deletion: attach the demoted new_vendor fact as a reason on
+    # the semantic issue that owns the transaction (DOMAIN.md invariant).
+    _SEMANTIC = {"capex_vs_opex", "owner_personal", "related_party"}
+    for issue in issues:
+        if issue.category not in _SEMANTIC:
+            continue
+        for ref in issue.evidence_refs:
+            t = demoted_new_vendor.get(ref)
+            if t is not None:
+                issue.reasons.append(
+                    f"Also the first transaction from {t.name} in the period — a "
+                    f"new vendor; noted here rather than raised as a separate issue."
+                )
 
     _assign_presentation_order(issues, ledger)
     return issues
